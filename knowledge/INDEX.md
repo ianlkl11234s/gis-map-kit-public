@@ -1,7 +1,7 @@
 # 卡片總目錄
 
 > 由腳本自動產生，不要手改。
-> 共 234 張卡。先在下表選主題，再讀該主題的 `_index.md` 找卡；只讀需要的卡。
+> 共 235 張卡。先在下表選主題，再讀該主題的 `_index.md` 找卡；只讀需要的卡。
 > **怎麼讀**：先看下方主題表 → 進該主題的 `_index.md`，看「什麼情況看這張」找到對應的卡 → 只讀需要的卡。`xx-00` 若存在，是該主題的決策總表，可先讀。
 > 也可以直接在 knowledge/ 用關鍵字搜尋卡片的 tags 與標題。
 > evidence：Evaluated 有量測／Implemented 有實作／Observed 有事故或修正紀錄／Candidate 研究過未實作／General 一般建議。
@@ -9,7 +9,7 @@
 | 主題 | 內容 | 卡數 | 總表 | 索引 |
 |---|---|---|---|---|
 | 00-system-thinking | 系統思考（先建立系統，再找資料） | 15 | [00-00](00-system-thinking/00-00-system-thinking-index.md) | [00-system-thinking/_index.md](00-system-thinking/_index.md) |
-| 01-taiwan-apis | 台灣開放資料 API | 16 | [01-00](01-taiwan-apis/01-00-platforms-overview.md) | [01-taiwan-apis/_index.md](01-taiwan-apis/_index.md) |
+| 01-taiwan-apis | 台灣開放資料 API | 17 | [01-00](01-taiwan-apis/01-00-platforms-overview.md) | [01-taiwan-apis/_index.md](01-taiwan-apis/_index.md) |
 | 02-basemaps | 底圖 | 12 | [02-00](02-basemaps/02-00-basemaps-index.md) | [02-basemaps/_index.md](02-basemaps/_index.md) |
 | 03-dynamics | 動態與時間軸 | 11 | [03-00](03-dynamics/03-00-dynamics-index.md) | [03-dynamics/_index.md](03-dynamics/_index.md) |
 | 04-effects-catalog | 動態效果與靜態表現形式 | 21 | [04-00](04-effects-catalog/04-00-effects-index.md) | [04-effects-catalog/_index.md](04-effects-catalog/_index.md) |
