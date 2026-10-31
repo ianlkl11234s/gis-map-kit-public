@@ -1,0 +1,15 @@
+{
+  "name": "gis-map-kit",
+  "description": "GIS 圖台參考包 gis-map-kit 的安裝來源",
+  "owner": {
+    "name": "Migu Cheng",
+    "url": "https://github.com/ianlkl11234s"
+  },
+  "plugins": [
+    {
+      "name": "gis-map-kit",
+      "source": "./",
+      "description": "做 GIS 圖台的參考包：台灣開放資料 API 接法、底圖、動態效果、色票、效能、設計系統與踩坑卡片；含限時課堂用的 gis-workshop"
+    }
+  ]
+}

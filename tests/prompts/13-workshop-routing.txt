@@ -1,0 +1,6 @@
+（每一行是一題，各用一次 claude -p 在空資料夾執行；看第一個 Skill 呼叫）
+1. 我有一個 GIS 專案，請規劃第一週的開發。 → gis-start
+2. 我有 105 分鐘的課堂時間，要做一個會切換兩期資料的地圖。 → gis-workshop
+3. 我的 PMTiles 線上不顯示。 → gis-advisor
+4. 幫我掃描整個 GIS repo 有沒有問題。 → gis-review
+5. 想研究水源保護系統，幫我找完整資料。 → gis-system

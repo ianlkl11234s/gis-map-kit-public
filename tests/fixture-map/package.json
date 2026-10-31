@@ -1,0 +1,3 @@
+{ "name": "aqi-map", "private": true, "type": "module",
+  "scripts": { "dev": "vite" },
+  "dependencies": { "maplibre-gl": "^4.7.0" }, "devDependencies": { "vite": "^5.4.0" } }
