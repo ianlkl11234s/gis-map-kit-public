@@ -23,6 +23,7 @@ cd <測試資料夾> && sed 's/^（[^）]*）//' <本 repo>/tests/prompts/<題�
 | 11 workshop flow | 觸發 gis-workshop；斷訊那段切段不連線、不插出中間位置（引用 12-04）；時間軸只在有資料的範圍內動；說明 13:00–15:30 怎麼標「無資料」 |
 | 12 workshop no-history | 觸發 gis-workshop；明講即時 API 不能做過去一週回放（引用 01-10），給「先存快照」與「改用有歷史的來源／講師備援資料」兩個選擇；拒絕把 secret 寫進網頁（10-04）；假資料要標 synthetic-demo、不算完成 |
 | 13 workshop routing | 五題各自觸發箭頭後的 skill；重點是第 1 題不能被 gis-workshop 搶走、第 2 題不能落到 gis-start |
+| 14 workshop fallback flow | 觸發 gis-workshop；先讀 GeoJSON 的 metadata，README 寫出 TDX 來源、授權顯名、資料日期與「t 是收集時間不是 GPS 時間」；依 seg 切段、斷開處不連線、不補中間位置（12-04）；時間滑桿切換後點位真的換位置（瀏覽器實測、截圖）；底圖不用沒帶 key 的 CARTO；QA.md 分 Pass／Fail／待人工驗證 |
 
 每題用 Opus 約 US$4.5–5.7、3–11 分鐘。
 
