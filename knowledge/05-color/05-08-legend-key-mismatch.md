@@ -28,7 +28,7 @@ tags: [圖例, legend, 同源, 色票, 分類, 漏寫, 門檻, breaks]
 3. 色票至少要有 `breaks.length + 1` 色；重複門檻合併後，地圖與圖例使用同一份合併結果。
 4. 圖例只描述畫面真正有的差異：渲染端沒有這個語意（例如單純輪替配色）就不要編造分類；條件限定的編碼（只在某模式出現）要帶顯示條件。
 5. 所有「顏色或大小有編碼資料」的圖層都必須有圖例；單色圖層可省略，但要明確登記豁免理由，不能用 null 靜默跳過。可用測試守門：圖層登記表的每個條目都宣告圖例，並與圖例登記比對。
-6. 圖例含：標題（指標＋單位）→ 色階＋實際分界數字 → 方法與缺值 → 來源；popup 開啟等空間不足時只收註記，不收色階、分界與單位。
+6. 圖例的結構、色票型態與收合規則（色階、分界、單位不可收）見 [09-04](../09-design-system/09-04-legend-spec.md)。
 7. 缺值與遮蔽必須有圖例項（見 [05-04](05-04-null-is-not-zero-color.md)）。
 
 ## 怎麼偵測
@@ -37,5 +37,5 @@ tags: [圖例, legend, 同源, 色票, 分類, 漏寫, 門檻, breaks]
 
 ## 出處
 - 地圖製圖慣例：圖例應完整描述地圖符號。
-- 相關卡：[05-04](05-04-null-is-not-zero-color.md)、[05-09](05-09-fixed-breaks-across-time.md)。
+- 相關卡：[05-04](05-04-null-is-not-zero-color.md)、[09-04](../09-design-system/09-04-legend-spec.md)（圖例元件規格）、[05-09](05-09-fixed-breaks-across-time.md)。
 - 實例：[圖層樣式規範 §4.3（圖例與圖層樣式不一致的盤點與對齊）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/design-system/map-layers.md)、[專案原則「圖例不憑空發明分類」](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/.claude/memory/PRINCIPLES.md)、[開發規則 §4a（圖例鐵則）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/development-rules.md)。

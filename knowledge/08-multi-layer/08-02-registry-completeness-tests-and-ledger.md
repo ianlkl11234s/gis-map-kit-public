@@ -56,5 +56,4 @@ expect(declaredNull).toEqual([...NO_LEGEND_LEDGER].sort());
 
 ## 出處
 - ratchet 測試的一般做法（只准降不准升的基準）。
-- 相關卡：[10-20](../10-ops/10-20-layer-style-golden-snapshot.md)（派生樣式的黃金快照）。
 - 實例：[src/components/sidebar/__tests__/layerConsistency.test.ts](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/components/sidebar/__tests__/layerConsistency.test.ts)（完整性與 ledger）、[src/data/__tests__/layerManifest.test.ts](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/data/__tests__/layerManifest.test.ts)（對帳）。

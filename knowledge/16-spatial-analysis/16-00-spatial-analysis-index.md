@@ -27,7 +27,6 @@ tags: [空間分析, 總表, 熱點, 區位商數, MAUP, 可達性, 地理編碼
 
 ## 相關主題
 - 比例指標的分母與重複計算：[06-07](../06-data-formats/06-07-ratio-denominator-and-double-counting.md)；標示推估與模型值：[06-08](../06-data-formats/06-08-label-estimates-and-models.md)。
-- 給 AI agent 的分析工具如何設計、口徑如何傳遞：[17-04](../17-ai-agent/17-04-agent-tool-design-semantics.md)。
 - 資料新鮮度與零值、缺值契約：[06-06](../06-data-formats/06-06-zero-null-stale-data-contract.md)。
 - 圖上未涵蓋與空格的畫法：[14-05](../14-scale-density/14-05-honest-aggregation.md)。
 

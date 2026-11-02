@@ -34,7 +34,7 @@ tags: [地理編碼, geocoding, 地址, 門牌, 內插, 精度, geocode_precisio
 5. **先試小批再全量**：抽 50–100 筆量命中率與誤差，再決定路線。
 6. **外部服務要先取得同意**：把地址送到第三方之前，要使用者明確同意；系統上做成「同一次呼叫必須帶同意旗標」，不靠口頭約定。
 7. **金鑰不進前端**；批次結果寫回資料庫或快取，不重複付費查詢。
-8. 中斷可續跑、分批寫入的做法見 [10-17](../10-ops/10-17-all-or-nothing-batch-and-checkpoint.md)；使用者「我的位置」與地址查詢的權限區分見 [11-07](../11-extras/11-07-geolocation-my-location-permissions.md)。
+8. 使用者「我的位置」與地址查詢的權限區分見 [11-07](../11-extras/11-07-geolocation-my-location-permissions.md)。
 
 ## 怎麼偵測
 - 通用：大量點重疊在同一座標或行政區中心；點沿道路等距排列；結果表沒有精度或來源欄位。
@@ -45,5 +45,5 @@ tags: [地理編碼, geocoding, 地址, 門牌, 內插, 精度, geocode_precisio
 - OSM Nominatim Usage Policy（每秒 1 次、需有效 User-Agent）。
 - 內政部 TGOS 地址定位服務說明（批次上限以官方為準）。
 - 各付費 Geocoding API 的計價以官方頁為準。
-- 相關卡：[10-17](../10-ops/10-17-all-or-nothing-batch-and-checkpoint.md)、[11-07](../11-extras/11-07-geolocation-my-location-permissions.md)、[17-01](../17-ai-agent/17-01-agent-map-control-rules.md)、[16-08](16-08-geometry-quality-flags-before-analysis.md)（分析前幾何健檢）。
+- 相關卡：[11-07](../11-extras/11-07-geolocation-my-location-permissions.md)、[16-08](16-08-geometry-quality-flags-before-analysis.md)（分析前幾何健檢）。
 

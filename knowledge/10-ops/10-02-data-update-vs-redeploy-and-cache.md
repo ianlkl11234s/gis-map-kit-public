@@ -14,8 +14,7 @@ tags: [快取, cache-control, immutable, 版本化, 指標檔, manifest, CDN, 40
 
 ## 症狀
 - 資料補上了，使用者（或自己）仍看到舊檔。
-- 補檔後線上仍 404：CDN 把 404 錯誤頁快取了一天。
-- 設了「一年 immutable」的資料檔更新後，舊訪客一直拿舊檔。
+- 補檔後線上仍 404，或設了長效 immutable 的檔更新後舊訪客一直拿舊檔（快取機制見 [06-04](../06-data-formats/06-04-cache-immutable-404-and-stale-edge.md)）。
 - 資料路徑寫死在程式裡，想退回上一版沒辦法。
 
 ## 原因
@@ -29,7 +28,7 @@ tags: [快取, cache-control, immutable, 版本化, 指標檔, manifest, CDN, 40
    - 會變的指標檔（`*manifest*.json`、`*_current.*`）→ 短 TTL（如 5 分鐘）＋must-revalidate；
    - 檔名含日期或 hash → 長效 immutable；
    - 其餘未版本化資料 → 短到中等（如 1 天，可加 stale-while-revalidate）。
-4. 補檔後仍 404 或看到舊檔：依 [06-04](../06-data-formats/06-04-cache-immutable-404-and-stale-edge.md) 排查（404 負向快取、邊緣舊檔），CDN 規則與 purge 準備見 [10-19](10-19-cdn-cache-rule-scope-and-scoped-purge.md)。
+4. 補檔後仍 404 或看到舊檔：依 [06-04](../06-data-formats/06-04-cache-immutable-404-and-stale-edge.md) 排查（404 負向快取、邊緣舊檔、CDN 規則範圍與 purge）。
 5. 大檔若由 entrypoint／啟動腳本從物件儲存同步到容器，注意「容器重啟才拉」，部署順序要寫在發布步驟裡（先上傳大檔，再合併程式）。
 6. 發布文件要包含「資料資產」步驟，不能只寫程式發布。
 
@@ -39,6 +38,6 @@ tags: [快取, cache-control, immutable, 版本化, 指標檔, manifest, CDN, 40
 
 ## 出處
 - 一般 HTTP 快取實務（RFC 9111 Cache-Control、immutable 指令）。
-- 相關卡：[06-04](../06-data-formats/06-04-cache-immutable-404-and-stale-edge.md)（快取機制：immutable、404 負向快取、邊緣供舊檔）、[10-19](10-19-cdn-cache-rule-scope-and-scoped-purge.md)（CDN 規則與 purge）。
+- 相關卡：[06-04](../06-data-formats/06-04-cache-immutable-404-and-stale-edge.md)（快取機制：immutable、404 負向快取、邊緣供舊檔、CDN 規則）。
 - 實例：[nginx.conf（指標檔短 TTL、版本化檔長效、其餘 1 天）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/nginx.conf)、[src/data/layerAssetIndex.ts](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/data/layerAssetIndex.ts)（靜態資產版本化試點）。
 

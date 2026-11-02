@@ -25,7 +25,7 @@ LQ＝（該區某類別數 ÷ 該區總數）÷（全體某類別數 ÷ 全體�
 
 ## 解法
 1. **回答寫明分母**：「相對所有公司」或「相對戶籍人口」。人口分母要用實際居住或戶籍人口，不能用模擬、推估或日夜人口相加的欄位（見 [06-07](../06-data-formats/06-07-ratio-denominator-and-double-counting.md)、[06-08](../06-data-formats/06-08-label-estimates-and-models.md)）。
-2. **類別定義選一個預設並寫明**，同時告訴使用者可以換成哪一種；預設口徑要記錄在資料使用須知（[17-04](../17-ai-agent/17-04-agent-tool-design-semantics.md)），不讓每次分析自己挑。
+2. **類別定義選一個預設並寫明**，同時告訴使用者可以換成哪一種；預設口徑要記錄在資料使用須知，不讓每次分析自己挑。
 3. **設最小樣本門檻**：總數與類別數都低於門檻的單元標「樣本太少」，不給 LQ 值，也不畫成 0 或最淺色（[14-05](../14-scale-density/14-05-honest-aggregation.md)）。建議門檻是總數 ≥ 50 且類別數 ≥ 5，可依資料調整，但要寫進工具，不由每次分析自選。
 4. **比例類對疊檔不敏感，總量類敏感**：表裡疊了多個快照時，LQ、占比不會變，但件數、加總會翻倍；同一份結果同時報件數時，先取單一快照（[06-07](../06-data-formats/06-07-ratio-denominator-and-double-counting.md)）。
 5. **參考整體也是口徑**：「高雄市內哪一區最集中」要用高雄全市當參考，不是全國；換參考範圍，LQ 就會變。
@@ -39,5 +39,5 @@ LQ＝（該區某類別數 ÷ 該區總數）÷（全體某類別數 ÷ 全體�
 
 ## 出處
 - 區位商數為區域經濟學標準指標（一般教科書定義）。
-- 相關卡：[06-07](../06-data-formats/06-07-ratio-denominator-and-double-counting.md)（分母與疊檔）、[06-08](../06-data-formats/06-08-label-estimates-and-models.md)（推估與模擬人口）、[14-05](../14-scale-density/14-05-honest-aggregation.md)（小樣本不上色）、[17-04](../17-ai-agent/17-04-agent-tool-design-semantics.md)。
+- 相關卡：[06-07](../06-data-formats/06-07-ratio-denominator-and-double-counting.md)（分母與疊檔）、[06-08](../06-data-formats/06-08-label-estimates-and-models.md)（推估與模擬人口）、[14-05](../14-scale-density/14-05-honest-aggregation.md)（小樣本不上色）。
 

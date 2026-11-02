@@ -27,7 +27,7 @@ tags: [MAUP, 可變面積單元問題, 跨尺度, 相關, Spearman, 雙變量 Mo
 4. **補 0 的規則**：點位計數是真值，研究範圍內沒有點的單元＝0；統計指標的缺值、比率分母為 0 或太小的單元要排除並列出，不補 0。
 5. **網格只用於點位**：行政區統計（人口、所得）不要攤到網格上，否則是自己捏造的空間分布；跳過時說明「這個指標只發布到行政區」。
 6. **空間相關另外看**：Spearman 不管位置。要問「A 多的地方，旁邊 B 也多嗎」用雙變量 Moran；它是**不對稱**的（A 是焦點、B 取鄰近平均），把要被解釋的現象放 B。
-7. **口徑先對齊再算**：兩邊的時間、範圍、計數單位（一列是一件事故還是一個當事人）不一致，先擋下或提醒（[17-04](../17-ai-agent/17-04-agent-tool-design-semantics.md)）。
+7. **口徑先對齊再算**：兩邊的時間、範圍、計數單位（一列是一件事故還是一個當事人）不一致，先擋下或提醒。
 8. **相關不是因果**：回答只說「同時多」，原因要另外找證據。
 9. 單一變數的熱點與群聚見 [16-01](16-01-hotspot-clustering-methods.md)；比例指標的分母見 [16-02](16-02-location-quotient-and-ratio-metrics.md)。
 
@@ -39,5 +39,5 @@ tags: [MAUP, 可變面積單元問題, 跨尺度, 相關, Spearman, 雙變量 Mo
 ## 出處
 - Openshaw (1984) The Modifiable Areal Unit Problem；Robinson (1950) 生態謬誤。
 - PySAL `esda.Moran_BV`、scipy `spearmanr` 文件。
-- 相關卡：[16-01](16-01-hotspot-clustering-methods.md)（熱點與群聚）、[16-02](16-02-location-quotient-and-ratio-metrics.md)（比例指標分母）、[17-04](../17-ai-agent/17-04-agent-tool-design-semantics.md)（口徑相容性檢查）、[16-06](16-06-reported-counts-not-occurrence.md)（通報件數不等於發生數）。
+- 相關卡：[16-01](16-01-hotspot-clustering-methods.md)（熱點與群聚）、[16-02](16-02-location-quotient-and-ratio-metrics.md)（比例指標分母）、[16-06](16-06-reported-counts-not-occurrence.md)（通報件數不等於發生數）。
 

@@ -1,12 +1,12 @@
 ---
 id: 15-05
-title: 第一張網頁地圖的最小骨架：MapLibre＋免 key 示範底圖＋一個 GeoJSON 圖層、圖例、popup
+title: 第一張網頁地圖的最小骨架：MapLibre＋免 key 底圖（OpenFreeMap）＋一個 GeoJSON 圖層、圖例、popup
 topic: 15-getting-started
 kind: pattern
 scope: public
 evidence: General
 stacks: [maplibre]
-tags: [MapLibre, 最小範例, 骨架, GeoJSON, addSource, addLayer, popup, 圖例, 免 key, 入門, 範本]
+tags: [MapLibre, OpenFreeMap, 最小範例, 骨架, GeoJSON, addSource, addLayer, popup, 圖例, 免 key, 入門, 範本]
 ---
 
 ## 原則
@@ -20,7 +20,7 @@ tags: [MapLibre, 最小範例, 骨架, GeoJSON, addSource, addLayer, popup, 圖�
 一張「看得懂」的地圖至少要四件事：底圖、資料圖層、圖例、點擊後的說明（popup）。少了圖例和 popup，畫面只是一堆色點。
 
 ## 解法
-存成 `index.html`，旁邊放 `points.geojson`，用本機 server 打開（見 [15-03](15-03-local-server-file-protocol-cors.md)）。程式碼為通用範例，版本號與樣式網址以 MapLibre 官方文件為準。
+存成 `index.html`，旁邊放 `points.geojson`，用本機 server 打開（見 [15-03](15-03-local-server-file-protocol-cors.md)）。程式碼為通用範例，版本號以 MapLibre 官方文件為準，底圖樣式網址以 OpenFreeMap 官方 Quick Start 為準。
 
 ```html
 <!doctype html>
@@ -46,7 +46,8 @@ tags: [MapLibre, 最小範例, 骨架, GeoJSON, addSource, addLayer, popup, 圖�
   <script>
     const map = new maplibregl.Map({
       container: 'map',
-      style: 'https://demotiles.maplibre.org/style.json', // 官方示範樣式：免 key，只供練習
+      // OpenFreeMap：免 key、看得到街道；attribution 由樣式自動帶出，不要關掉
+      style: 'https://tiles.openfreemap.org/styles/positron',
       center: [121.0, 23.7],  // [經度, 緯度]
       zoom: 6.5,
     });
@@ -84,13 +85,14 @@ tags: [MapLibre, 最小範例, 骨架, GeoJSON, addSource, addLayer, popup, 圖�
 2. **圖例的顏色與門檻和 `circle-color` 寫同一組值**；改了一邊忘了另一邊，是最常見的圖例錯誤（[05-08](../05-color/05-08-legend-key-mismatch.md)）。
 3. **popup 用 `textContent`／`setDOMContent`**，不要把資料欄位直接塞進 `setHTML`，避免資料裡的 HTML 被執行。
 4. **缺值顯示「無資料」**，不要顯示成 0（[05-04](../05-color/05-04-null-is-not-zero-color.md)）。
-5. 示範底圖只適合練習；要正式公開時，底圖選型與授權見 [02-02](../02-basemaps/02-02-basemap-selection-decision.md)、[13-01](../13-author-taste/13-01-sdk-maplibre-default.md)，標示見 [02-07](../02-basemaps/02-07-attribution.md)。
+5. **底圖 attribution 保持開啟**：MapLibre 會從 OpenFreeMap 的圖磚設定自動顯示「OpenFreeMap © OpenMapTiles Data from OpenStreetMap」。OpenFreeMap 免費、不限流量，但沒有服務保證（as-is，可能無預警停止），正式站要有備案。MapLibre 官方示範樣式（`demotiles.maplibre.org`）在城市尺度只看得到海陸、看不到街道，只當連不上時的備援。底圖選型與授權見 [02-02](../02-basemaps/02-02-basemap-selection-decision.md)，標示見 [02-07](../02-basemaps/02-07-attribution.md)。
 6. 資料超過數 MB 或點數上萬，改成 PMTiles（[06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md)），點太多時的畫法見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)。
 
 ## 怎麼偵測
-- 通用：地圖上有色點但沒有圖例；點下去沒反應；正式站還在用示範樣式。
-- 搜尋：`addLayer\(` 存在但整個專案沒有 `Popup\(` 或圖例元素；`setHTML\(.*properties`（資料直接當 HTML）；`demotiles\.maplibre\.org` 出現在正式站設定（適用 stack：maplibre）。
+- 通用：地圖上有色點但沒有圖例；點下去沒反應；城市尺度的地圖用了只有海陸的示範樣式，看不到街道；右下角沒有底圖 attribution。
+- 搜尋：`addLayer\(` 存在但整個專案沒有 `Popup\(` 或圖例元素；`setHTML\(.*properties`（資料直接當 HTML）；`demotiles\.maplibre\.org`（城市尺度看不到街道）；`attributionControl:\s*false`（適用 stack：maplibre）。
 
 ## 出處
 - MapLibre GL JS 官方文件與範例（Add a GeoJSON source、Display a popup on click）。
+- OpenFreeMap：openfreemap.org（Quick Start、FAQ、Terms of Service），查證日期 2026-11-02；條款重點見 [02-02](../02-basemaps/02-02-basemap-selection-decision.md)。
 - 相關卡：[05-08](../05-color/05-08-legend-key-mismatch.md)（圖例一致性）、[09-02](../09-design-system/09-02-layer-ux-four-iron-rules.md)（圖層 UX 必備項目）。

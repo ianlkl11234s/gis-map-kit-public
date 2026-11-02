@@ -19,6 +19,7 @@ tags: [總表, 底圖, 選型, 授權, 計費, attribution, setStyle, PMTiles, �
 |---|---|---|
 | 比較廠商時拉成一張大表 | [02-01](02-01-four-layers-data-tiles-sdk-format.md) | 四層分別決定，先定 SDK 與計費授權，再選底圖與格式 |
 | 要挑底圖來源 | [02-02](02-02-basemap-selection-decision.md) | 流量不可控的公開頁用自架 PMTiles，不用 OSM 公用圖磚；費用以官方當期頁面為準，上線前目視確認國界與中文地名 |
+| 課堂或原型要免 key、看得到街道的底圖 | [02-02](02-02-basemap-selection-decision.md) | MapLibre＋OpenFreeMap（positron 適合疊資料），attribution 保持開啟；無服務保證，不用沒帶 key 的 CARTO |
 | 想用 OSM 公用圖磚 | [02-03](02-03-osm-data-license-vs-tile-policy.md) | OSM 資料可自由用不代表圖磚伺服器可用；正式站、嵌入頁、離線版改自託管或條款清楚的圖磚，並標示 OSM |
 | 用 Mapbox 想省錢或管 token | [02-04](02-04-mapbox-billing-token-license.md) | 只換圖磚省不到錢，要連函式庫一起換；流量不可控頁預設 MapLibre＋自託管；token 只用 public scope 並限網域 |
 

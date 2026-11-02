@@ -28,7 +28,7 @@ tags: [宣傳, 推廣, 社群, 影片, 回顧影片, 前後對比, motion, GIF, 
 1. **分享預覽**：社群貼連結時顯示的 og:image 與標題，SPA 地圖站要靠預先產生的靜態 HTML 才有，做法見 [11-01](11-01-spa-empty-html-seo-prerender.md)、[11-04](11-04-share-camera-og-image-saved-scene.md)，這裡不重複。
 2. **錄製用的拍攝模式**：用網址參數直接開指定圖層與鏡頭，並隱藏面板（見 [11-04](11-04-share-camera-og-image-saved-scene.md) 分享網址、[11-06](11-06-canvas-capture-export-print.md) 截圖匯出）。選資料最豐富的時段拍（例如平日早上通勤），在正式站錄。
 3. **回顧／宣傳影片的內容**：主軸講「看得到什麼」（圖層、資料），不放 commit 數與開發過程。用時間軸式敘事：寧靜開場 → 逐站加速 → 高潮 → 進階 → 一句話收尾；主題用問句引入；開場要快速鋪到「很多圖層」。一氣呵成，不要簡報翻頁感。先出 16:9，再改直式。
-4. **防暈**：畫面主體穩定，前進感交給 HUD 或時間軸；轉場用光縫 wipe，位移 ≤4%；不橫推、不模糊、不頻閃；鏡頭用程式控制且方向一致（見 [04-12](../04-effects-catalog/04-12-camera-motion.md)、[13-05](../13-author-taste/13-05-motion-data-driven.md)）。配樂連續演進；響度約 -15 LUFS、true peak ≤ -1 dBTP（這是作者偏好值，平台規格以其當期說明為準）。
+4. **防暈**：畫面主體穩定，前進感交給 HUD 或時間軸；轉場用光縫 wipe，位移 ≤4%；不橫推、不模糊、不頻閃；鏡頭用程式控制且方向一致（見 [04-12](../04-effects-catalog/04-12-camera-motion.md)）。配樂連續演進；響度約 -15 LUFS、true peak ≤ -1 dBTP（這是作者偏好值，平台規格以其當期說明為準）。
 5. **數字與內容安全**：影片裡的數字口徑一致，且在資料台帳有出處（見 [11-13](11-13-scrollytelling-story-and-number-ledger.md)）；日期以資料實際時間為準，不捏造。新聞類排除治安、事故、點名個人；個資不入鏡。
 6. **前後對比動畫**（介面改版前後）：
    - 分隔線從改版前單程掃到改版後，不掃回，不用淡入切換。
@@ -53,5 +53,5 @@ tags: [宣傳, 推廣, 社群, 影片, 回顧影片, 前後對比, motion, GIF, 
 ## 出處
 - MDN〈Web Animations API〉：https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API （動畫可暫停並指定時間點，用於逐格截圖）。
 - 響度與時間長度數值為作者偏好，非引用標準。
-- 相關卡：[11-01](11-01-spa-empty-html-seo-prerender.md)、[11-02](11-02-robots-sitemap-soft404-canonical.md)、[11-03](11-03-llms-txt-and-ai-crawler-policy.md)、[11-04](11-04-share-camera-og-image-saved-scene.md)、[11-06](11-06-canvas-capture-export-print.md)、[11-13](11-13-scrollytelling-story-and-number-ledger.md)、[04-12](../04-effects-catalog/04-12-camera-motion.md)、[13-05](../13-author-taste/13-05-motion-data-driven.md)。
+- 相關卡：[11-01](11-01-spa-empty-html-seo-prerender.md)、[11-02](11-02-robots-sitemap-soft404-canonical.md)、[11-03](11-03-llms-txt-and-ai-crawler-policy.md)、[11-04](11-04-share-camera-og-image-saved-scene.md)、[11-06](11-06-canvas-capture-export-print.md)、[11-13](11-13-scrollytelling-story-and-number-ledger.md)、[04-12](../04-effects-catalog/04-12-camera-motion.md)。
 

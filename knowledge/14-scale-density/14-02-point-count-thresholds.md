@@ -40,7 +40,7 @@ tags: [數量級, 門檻, 熱區, heatmap, cluster, 出點縮放, minzoom, 透�
 
 點徑（作者偏好，不是業界規範）：
 - 預設：點徑固定三階（[09-10](../09-design-system/09-10-map-symbol-size-tiers.md)），靠透明度與熱區處理密度，不靠縮小點。
-- 特例：全圖點數超過 10 萬、而且所有縮放都要顯示的圖層，才讓點徑隨縮放變化（填充量與效能考量，[07-02](../07-performance/07-02-many-points-rendering.md)）。
+- 特例：全圖點數超過 10 萬、而且所有縮放都要顯示的圖層，才讓點徑隨縮放變化（填充量與效能考量，[07-02](../07-performance/07-02-many-points-rendering.md)）。起點：半徑 z0 0.7、z7 1、z11 2 px，z14 起回到該層的階；描邊 z11 以下 0、z13 起 1 px。
 - 不當預設的做法：低縮放直接 minzoom 隱藏（會讓遠看沒有資料）、全部畫出（糊成一片）。資料本來就只在近看有意義時，隱藏仍可用。
 - 熱區半徑與強度不全作品統一，依資料的空間尺度調，起點為 z10 半徑 12、z14 半徑 20。
 - 點的尺寸分階：圖層依語意（密集／一般／強調），分析結果依點數，兩者並存。
@@ -54,5 +54,5 @@ tags: [數量級, 門檻, 熱區, heatmap, cluster, 出點縮放, minzoom, 透�
 ## 出處
 - 官方：Mapbox GL／MapLibre heatmap 與 cluster 文件。
 - 繪製效能角度（填充量、instancing）見 [07-02](../07-performance/07-02-many-points-rendering.md)；尺寸三階見 [09-10](../09-design-system/09-10-map-symbol-size-tiers.md)。
-- 實例：[mini-taiwan-pulse 縮放門檻與熱區參數](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/map/mapStyleScale.ts)。
+- 實例：[mini-taiwan-pulse 縮放門檻與熱區參數](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/map/mapStyleScale.ts)（門檻、出點縮放、透明度）、[點徑特例](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/map/pointSpec.ts)（單層 8–18 萬點、全國視角合計約 35 萬點的全縮放點層）。
 - 實例：[圖層樣式規範（密集點規則）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/design-system/map-layers.md)。

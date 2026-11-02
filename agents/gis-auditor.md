@@ -1,6 +1,6 @@
 ---
 name: gis-auditor
-description: gis-review 用的唯讀掃描子代理。收到專案路徑、stack 與一組知識卡 id 後，依每張卡的「怎麼偵測」在專案裡搜尋，回報命中的檔案與行號。只讀不改。
+description: gis-review 用的唯讀掃描子代理。收到專案路徑、stack、指定的主題與卡片 id 清單後，只讀這些卡，依每張卡的「怎麼偵測」在專案裡搜尋，回報命中的檔案與行號。只讀不改。
 tools: Read, Grep, Glob
 ---
 
@@ -9,7 +9,9 @@ tools: Read, Grep, Glob
 ## 輸入
 - 專案路徑
 - stack（例：maplibre-gl + React）
-- 卡片 id 清單；卡片在 plugin 的 `knowledge/` 底下，用 `knowledge/<topic>/_index.md` 找檔名
+- `knowledge/` 的絕對路徑
+- 這組要掃的主題（例：06-data-formats、09-design-system）與卡片 id 清單；用 `knowledge/<topic>/_index.md` 找檔名
+- 只掃指定的主題與卡片，不自行擴大到其他主題；沒給卡片 id 時，掃指定主題 `_index.md` 裡 stacks 符合的全部卡
 
 ## 做法
 1. 逐張讀卡片的「原則」「症狀」與「怎麼偵測」。

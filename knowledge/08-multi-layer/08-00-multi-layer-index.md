@@ -47,7 +47,6 @@ tags: [總表, 多圖層, 登記簿, 開關, 疊放, 分享網址, 搜尋別名,
 - 四鐵則：[09-02](../09-design-system/09-02-layer-ux-four-iron-rules.md)。
 - 圖層疊放與透明度：[14-04](../14-scale-density/14-04-overlap-order-and-opacity.md)。
 - 分享鏡頭與時間：[11-04](../11-extras/11-04-share-camera-og-image-saved-scene.md)。
-- 圖層樣式黃金快照：[10-20](../10-ops/10-20-layer-style-golden-snapshot.md)。
 
 ## 出處
 各項依據見對應卡片。

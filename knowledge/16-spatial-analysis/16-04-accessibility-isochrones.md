@@ -45,6 +45,6 @@ tags: [可達性, 等時圈, isochrone, 服務範圍, 路網距離, 直線距離
 
 ## 出處
 - OSRM、Valhalla、osmnx、osmium 官方文件；OSM 授權（ODbL）。
-- 相關卡：[00-05](../00-system-thinking/00-05-eight-relationship-types-and-spatial-vs-system-proximity.md)、[06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md)、[14-04](../14-scale-density/14-04-overlap-order-and-opacity.md)、[17-01](../17-ai-agent/17-01-agent-map-control-rules.md)。
+- 相關卡：[00-05](../00-system-thinking/00-05-eight-relationship-types-and-spatial-vs-system-proximity.md)、[06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md)、[14-04](../14-scale-density/14-04-overlap-order-and-opacity.md)。
 - 實例：[mini-taiwan-pulse 可達性分析 skill](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/.claude/skills/accessibility-analysis/SKILL.md)。
 

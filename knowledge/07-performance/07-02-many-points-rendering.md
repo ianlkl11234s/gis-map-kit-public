@@ -1,6 +1,6 @@
 ---
 id: 07-02
-title: 大量點的渲染：縮放分階的點徑與描邊、PMTiles、cluster／heatmap、GPU instancing 怎麼選
+title: 大量點的渲染：heatmap、PMTiles、cluster、GPU instancing 怎麼選（點徑隨縮放只限超過 10 萬點的全縮放圖層）
 topic: 07-performance
 kind: decision
 scope: public
@@ -10,7 +10,7 @@ tags: [大量點, cluster, heatmap, circle, instancing, 描邊, 低 zoom, 發熱
 ---
 
 ## 原則
-點數多時，低縮放縮小點徑並取消描邊，依需求改用 heatmap、cluster 或 GPU instancing；不要用「固定大小加描邊的圓」或「每點一個 3D 物件」硬撐。
+點數多時，先照 [14-02](../14-scale-density/14-02-point-count-thresholds.md) 的數量級門檻（低縮放換熱區、延後出點）；要動畫或 3D 改用 GPU instancing。只有全圖超過 10 萬點、又必須在所有縮放顯示的圖層，才讓低縮放點徑變小並取消描邊。不要讓幾十萬個「固定大小加描邊的圓」或「每點一個 3D 物件」硬撐。
 
 ## 症狀
 - 打開一個幾十萬點的圖層後，筆電風扇狂轉、拖曳卡頓。
@@ -23,18 +23,18 @@ tags: [大量點, cluster, heatmap, circle, instancing, 描邊, 低 zoom, 發熱
 - 每個物件一個 draw call 或一個 DOM 元素，物件數一多就是瓶頸。
 
 ## 解法
-依全圖點數決定低縮放畫法、出點縮放與預設透明度的門檻見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)。依資料量與互動需求選型：
+門檻數字（1 千、1 萬、10 萬；出點縮放、預設透明度、點徑特例）只在 [14-02](../14-scale-density/14-02-point-count-thresholds.md)，本卡只講渲染技術怎麼選：
 
 | 情境 | 做法 |
 |---|---|
 | 點少 | 原生 circle／symbol layer 即可（數量門檻見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)） |
-| 點多、只需看分布 | **低 zoom 縮小點徑、取消描邊**，隨 zoom 漸進放大；或 heatmap／density |
-| 點多、要看個別點 | 向量圖磚（PMTiles／MVT）＋ cluster（聚合點）或依 zoom 分階顯示 |
+| 點多、只需看分布 | 低縮放 heatmap／density，拉近才出點（門檻見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)） |
+| 點多、要看個別點 | 向量圖磚（PMTiles／MVT）＋依 zoom 分階出點；cluster 只適合少量、要點進去看個別點的資料 |
 | 數萬到數十萬、要動畫或 3D | GPU instancing（單一 draw call），位置寫入 typed array（見 [07-04](07-04-update-granularity-setdata-vs-buffer.md)） |
 | 要精確保留每一點（不可抽稀） | 不抽稀；改減 buffer、降低點徑與描邊（見 [06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md)） |
 
 細節：
-1. 點徑與描邊用 zoom 內插運算式，低 zoom 小點無描邊，高 zoom 回到正常。
+1. 點徑特例（全圖超過 10 萬點且所有縮放都要顯示）才用 zoom 內插：低 zoom 小點無描邊，高 zoom 回到原本的階；起點數值見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)。其他圖層點徑維持固定階。
 2. 3D 立體只在需要時開（預設平面）；大量點不要用有幾何的 mesh 當點。
 3. heatmap 的低值站大量疊加會看起來像極端值，weight 要壓低值。
 4. 先不要預設抽稀（可能違反資料契約），也不要改成「圖磚只帶 id、點擊再查」（會改變 popup 的資料來源）；要採用前先確認。

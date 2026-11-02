@@ -27,7 +27,7 @@ tags: [ghost, stale, current table, UPSERT, 停泊, SOG, 港口, last known posi
 1. current 表每次寫入後依 `collected_at` 刪除超過保留時間的列（prune），或查詢時加時間條件。
 2. 停泊判定：在港口圍欄內（例如半徑 1.5 km、大港 3 km）且 SOG < 0.5 節持續超過約 1 小時，就切段並只保留進出港的邊界點；落在陸地上的點另外排除。
 3. 視覺上分層：最後回報超過門檻（例如 3 小時）的點淡化並在 popup 寫「最後回報 X 小時前」；更久的直接不畫。淡化門檻要比軌跡斷線門檻寬，否則整層都會是淡的（見 [12-04](12-04-track-gap-segmentation.md)）。
-4. 衛星這類有明確失效時間的物件，用資料本身的 epoch／decay 欄位判斷（見 [12-11](12-11-tle-staleness-sgp4.md)）。
+4. 衛星這類有明確失效時間的物件，用資料本身的 epoch／decay 欄位判斷。
 
 ## 怎麼偵測
 - 通用：比較「current 表筆數」與「最近 N 分鐘有回報的物件數」；差距持續擴大就是累積幽靈資料。
@@ -36,6 +36,6 @@ tags: [ghost, stale, current table, UPSERT, 停泊, SOG, 港口, last known posi
 - 搜尋（前端有沒有用回報時間）：`rg -n -i 'stale|lastSeen|last_seen|ageSec|STALE'` 在即時位置圖層。
 
 ## 出處
-- 一般即時位置資料做法。相關卡：[12-04](12-04-track-gap-segmentation.md)、[12-11](12-11-tle-staleness-sgp4.md)。
+- 一般即時位置資料做法。相關卡：[12-04](12-04-track-gap-segmentation.md)。
 - 實例：[船舶監看的淡化（3 小時）與斷線（1 小時）門檻，兩者用途不同](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/data/vesselWatchLoader.ts)；[衛星 current 表加 prune 設定的連帶變更](https://github.com/ianlkl11234s/gis-data-collectors/blob/e0beb720e2abd9fc35b674ef33e83d62df5d665b/.claude/pitfalls/2026-04-14-celestrak-ip-blocked.md)（否則 UPSERT 會累積過期資料）。
 

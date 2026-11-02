@@ -48,6 +48,6 @@ Supabase／PostgREST 專用細節：函式要明寫 `SET statement_timeout`（po
 
 ## 出處
 - PostgreSQL EXPLAIN、pg_cron、advisory lock 文件。
-- 相關卡：[07-01](07-01-performance-budget-and-measurement.md)、[07-08](07-08-public-rpc-timeout-clamp-rowcap.md)、[10-10](../10-ops/10-10-cron-overlap-advisory-lock.md)（排程自我重疊與監控本身就是負載）。
+- 相關卡：[07-01](07-01-performance-budget-and-measurement.md)、[07-08](07-08-public-rpc-timeout-clamp-rowcap.md)。
 - 實例：[mini-taiwan-pulse 預彙總指南](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/supabase-optimization.md)；[gis-data-collectors 預彙總 SQL 範本](https://github.com/ianlkl11234s/gis-data-collectors/blob/e0beb720e2abd9fc35b674ef33e83d62df5d665b/docs/sql/matview_disaster_alerts.sql)（同目錄另有國道壅塞、船舶軌跡等）。
 

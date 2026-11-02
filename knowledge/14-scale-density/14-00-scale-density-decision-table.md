@@ -34,7 +34,7 @@ tags: [決策表, 數量級, 縮放, 熱區, 網格, cluster, PMTiles, 點, 線,
 | 規則網格（H3、方格） | 依解析度 | 粗格（H3 res7、1–1.5 km） | 換細格（約 z9.5–10） | 細格或換回點（約 z12） | [14-03](14-03-zoom-handoff-pitfalls.md)、[14-05](14-05-honest-aggregation.md) |
 | 軌跡（航跡、船跡） | 數千條以上 | 抽稀檔（每條上限點數） | 中階抽稀 | 全解析度 | [14-07](14-07-moving-objects-and-trails-at-scale.md) |
 | 即時移動物件 | 數百–數萬 | 平面點（GPU 一次畫完） | 同左 | 方向箭頭（約 z12 起） | [14-07](14-07-moving-objects-and-trails-at-scale.md) |
-| 事件（地震、災害、通報） | 數十–數千 | 點＋語意色；疊加多時用熱區 | 點 | 點＋popup | [14-04](14-04-overlap-order-and-opacity.md)、[12-17](../12-domain-pitfalls/12-17-event-layer-fixed-limit-freeze.md) |
+| 事件（地震、災害、通報） | 數十–數千 | 點＋語意色；疊加多時用熱區 | 點 | 點＋popup | [14-04](14-04-overlap-order-and-opacity.md) |
 | 連續場（風、溫度、雨量） | 格點 | 影像或粒子；粒子數隨 zoom 自適應 | 同左 | 同左 | [14-07](14-07-moving-objects-and-trails-at-scale.md)、[06-09](../06-data-formats/06-09-bake-vector-field-to-png.md) |
 
 共通規則：

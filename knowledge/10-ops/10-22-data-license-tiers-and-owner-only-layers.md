@@ -34,7 +34,7 @@ tags: [授權, 政府資料開放授權條款, CC BY, ODbL, 未標示授權, 僅
 | ODbL（OSM，見 [02-03](../02-basemaps/02-03-osm-data-license-vs-tile-policy.md)） | 可 | 可，衍生資料庫 share-alike | 標示「© OpenStreetMap contributors」 |
 | 來源頁未標示 | 見解法 2 | 未知 | 來源卡標「授權待確認」、留原始連結 |
 | 明示僅供瀏覽、不得重製、不得下載，或重利用條件未確認 | 不得放進公開檔案 | 否 | 站主限定（解法 3）或 HOLD |
-| 商業 API 條款（地點與地理編碼 [16-05](../16-spatial-analysis/16-05-geocoding-precision-and-routing.md)、付費航跡 [12-18](../12-domain-pitfalls/12-18-paid-flight-api-ledger.md)） | 依該服務條款 | 常禁止快取、另存、散布 | 只即時呼叫、不入庫；入庫前讀條款 |
+| 商業 API 條款（地點與地理編碼 [16-05](../16-spatial-analysis/16-05-geocoding-precision-and-routing.md)） | 依該服務條款 | 常禁止快取、另存、散布 | 只即時呼叫、不入庫；入庫前讀條款 |
 | 含個資的開放資料（[07-14](../07-performance/07-14-open-data-pii-column-exclusion.md)） | 去除個資欄後 | 去除個資欄後 | 入庫時拿掉欄位 |
 | 公司內部或客戶營運資料 | 否 | 否 | 不進任何發布管道，先問資料擁有者 |
 
@@ -62,6 +62,6 @@ tags: [授權, 政府資料開放授權條款, CC BY, ODbL, 未標示授權, 僅
 
 ## 出處
 - 政府資料開放授權條款第 1 版（含第二條授權範圍、第三條標示、第四條與 CC BY 4.0 相容）：https://data.gov.tw/license ；ODbL 見 [02-03](../02-basemaps/02-03-osm-data-license-vs-tile-policy.md)。
-- 相關卡：[02-03](../02-basemaps/02-03-osm-data-license-vs-tile-policy.md)、[07-14](../07-performance/07-14-open-data-pii-column-exclusion.md)、[10-03](10-03-pmtiles-range-cdn-cors.md)、[10-04](10-04-public-token-vs-secret.md)、[12-18](../12-domain-pitfalls/12-18-paid-flight-api-ledger.md)、[16-05](../16-spatial-analysis/16-05-geocoding-precision-and-routing.md)。
+- 相關卡：[02-03](../02-basemaps/02-03-osm-data-license-vs-tile-policy.md)、[07-14](../07-performance/07-14-open-data-pii-column-exclusion.md)、[10-03](10-03-pmtiles-range-cdn-cors.md)、[10-04](10-04-public-token-vs-secret.md)、[16-05](../16-spatial-analysis/16-05-geocoding-precision-and-routing.md)。
 - 實例：[mini-taiwan-pulse 私人 Range 代理](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/server/coral-private/coral-private-server.mjs)、[反向代理精確 location](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/nginx.conf)、[部署契約測試](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/map/__tests__/deployContract.test.ts)、[土壤液化站主限定交接](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/features/soil-liquefaction/handoff.md)（新增私人家族漏改反向代理，正式站回首頁 HTML）。
 

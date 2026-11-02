@@ -1,7 +1,7 @@
 # 卡片總目錄
 
 > 由腳本自動產生，不要手改。
-> 共 235 張卡。先在下表選主題，再讀該主題的 `_index.md` 找卡；只讀需要的卡。
+> 共 208 張公開卡。先在下表選主題，再讀該主題的 `_index.md` 找卡；只讀需要的卡。
 > **怎麼讀**：先看下方主題表 → 進該主題的 `_index.md`，看「什麼情況看這張」找到對應的卡 → 只讀需要的卡。`xx-00` 若存在，是該主題的決策總表，可先讀。
 > 也可以直接在 knowledge/ 用關鍵字搜尋卡片的 tags 與標題。
 > evidence：Evaluated 有量測／Implemented 有實作／Observed 有事故或修正紀錄／Candidate 研究過未實作／General 一般建議。
@@ -18,11 +18,11 @@
 | 07-performance | 繪製效能與品質 | 14 | [07-00](07-performance/07-00-performance-index.md) | [07-performance/_index.md](07-performance/_index.md) |
 | 08-multi-layer | 多圖層管理 | 10 | [08-00](08-multi-layer/08-00-multi-layer-index.md) | [08-multi-layer/_index.md](08-multi-layer/_index.md) |
 | 09-design-system | 設計系統 | 11 | [09-00](09-design-system/09-00-design-system-index.md) | [09-design-system/_index.md](09-design-system/_index.md) |
-| 10-ops | 上線維運與持續收集 | 25 | [10-00](10-ops/10-00-ops-index.md) | [10-ops/_index.md](10-ops/_index.md) |
+| 10-ops | 上線維運與持續收集 | 13 | [10-00](10-ops/10-00-ops-index.md) | [10-ops/_index.md](10-ops/_index.md) |
 | 11-extras | 發布與分享（SEO、嵌入、截圖、PWA、無障礙…） | 16 | [11-00](11-extras/11-00-extras-index.md) | [11-extras/_index.md](11-extras/_index.md) |
-| 12-domain-pitfalls | 領域踩坑（海流、風場、航班、船舶、衛星…） | 19 | [12-00](12-domain-pitfalls/12-00-domain-index.md) | [12-domain-pitfalls/_index.md](12-domain-pitfalls/_index.md) |
-| 13-author-taste | 作者品味與設計偏好（非業界規範） | 8 | [13-00](13-author-taste/13-00-taste-overview.md) | [13-author-taste/_index.md](13-author-taste/_index.md) |
+| 12-domain-pitfalls | 領域踩坑（海流、風場、航班、船舶、衛星…） | 16 | [12-00](12-domain-pitfalls/12-00-domain-index.md) | [12-domain-pitfalls/_index.md](12-domain-pitfalls/_index.md) |
+| 13-author-taste | 作者品味與設計偏好（非業界規範） | 1 | [13-00](13-author-taste/13-00-taste-overview.md) | [13-author-taste/_index.md](13-author-taste/_index.md) |
 | 14-scale-density | 尺度與密度權衡（資料分類 × 數量級 × 縮放） | 8 | [14-00](14-scale-density/14-00-scale-density-decision-table.md) | [14-scale-density/_index.md](14-scale-density/_index.md) |
 | 15-getting-started | 入門：座標系統、GeoJSON、本機 server、工具鏈 | 6 | [15-00](15-getting-started/15-00-getting-started-index.md) | [15-getting-started/_index.md](15-getting-started/_index.md) |
 | 16-spatial-analysis | 空間分析、可達性與地理編碼 | 9 | [16-00](16-spatial-analysis/16-00-spatial-analysis-index.md) | [16-spatial-analysis/_index.md](16-spatial-analysis/_index.md) |
-| 17-ai-agent | AI Agent 與 MCP 操作地圖 | 5 | [17-00](17-ai-agent/17-00-ai-agent-index.md) | [17-ai-agent/_index.md](17-ai-agent/_index.md) |
+

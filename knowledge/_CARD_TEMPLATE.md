@@ -3,7 +3,7 @@ id: <主題碼>-<兩位數>          # 例：12-03（12-domain-pitfalls 第 3 �
 title: <一句話講問題或做法>
 topic: <資料夾名，例：12-domain-pitfalls>
 kind: pitfall | pattern | decision | catalog   # 踩坑／做法／選型決策／清單或總表
-scope: public | private        # private＝整張卡只進課程版
+scope: public | private        # private＝整張卡只進課程版（見下方「scope」）
 evidence: Evaluated | Implemented | Observed | Candidate | General
 #   Evaluated   有量測或比對結果
 #   Implemented 有程式實作
@@ -51,7 +51,11 @@ tags: [關鍵字, 給 INDEX 與 advisor 搜尋用]
 
 **長度**
 - 公開正文（不含程式碼區塊）：pitfall、pattern 不超過 2,000 字；decision、catalog 不超過 2,800 字。超過就拆成兩張，或刪掉不影響做法的細節。
-- private 段不超過 400 字，只留 1–2 條可追溯的實例指標。
+- private 段不超過 400 字，只留 1–2 條可追溯的實例指標。總表（kind: catalog）例外：private 卡的清單列只能包進 private 段，不受此限。
+
+**scope**
+- 設 `private` 的條件：整張卡只對本人專案有意義，或屬於後端排程／維運、作者個人偏好、AI agent 設計等對初學做地圖的學生太進階的內容。
+- 公開卡不可在正文引用 private 卡的編號：總表或「相關卡」清單裡的項目移進 private 段；正文句子改寫成不依賴該卡。
 
 **出處**
 - 公開 repo（mini-taiwan-pulse、gis-data-collectors）：用 `https://github.com/ianlkl11234s/<repo>/blob/<commit>/<path>` 連結，可以放在公開段。

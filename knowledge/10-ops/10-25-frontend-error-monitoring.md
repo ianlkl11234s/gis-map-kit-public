@@ -16,7 +16,7 @@ tags: [錯誤監控, error tracking, Sentry, GlitchTip, window.onerror, unhandle
 - 使用者回報「地圖空白」，開發者重現不了。
 - 圖磚 404 或 CORS 失敗只出現在使用者的 console，開發者不知道。
 - 手機切到背景再回來，WebGL context lost，地圖變黑。
-- 問題要等人來說才知道（與 [10-07](10-07-deadman-switch-outside-monitored-system.md) 同類）。
+- 問題要等人來說才知道。
 
 ## 原因
 - 地圖 SDK 的圖磚、樣式、source 載入失敗多半不丟到 `window.onerror`，而是走 SDK 自己的 `error` 事件。
@@ -34,7 +34,7 @@ tags: [錯誤監控, error tracking, Sentry, GlitchTip, window.onerror, unhandle
 3. **工具選項，不指定**：託管 SaaS（如 Sentry，免維運，但有配額與費用、資料在第三方）；可自架的方案（如 GlitchTip，資料自管，但要自己維運，與 Sentry SDK 的相容程度先自行查證）；或只把錯誤 POST 到自己的極簡端點（最便宜，但沒有去重、告警與 source map 還原）。
 4. **隱私**：地圖點擊、鏡頭位置、地址查詢、URL 參數都是位置資料。在送出前的 hook 裡（Sentry 稱 `beforeSend`，可修改事件或回傳 `null` 丟棄）去掉或降精度，breadcrumb 與 URL 也要處理，並在隱私頁揭露（見 [11-11](../11-extras/11-11-attribution-and-privacy-disclosure.md)、[11-07](../11-extras/11-07-geolocation-my-location-permissions.md)）。
 5. **source map 上傳到監控服務**，不要公開掛在網站上；上傳後從部署產物刪除 `.map` 檔。官方建議把上傳放進建置流程。
-6. **標 release 版號、設取樣率與每日上限**，避免帳單或配額被單一故障灌爆；告警降噪與去重規則見 [10-08](10-08-alert-dedup-recovery-and-root-cause.md)。
+6. **標 release 版號、設取樣率與每日上限**，避免帳單或配額被單一故障灌爆。
 
 ## 怎麼偵測
 - 搜尋：`\.on\(\s*['"]error['"]` 在地圖實例上零命中（mapbox-gl、maplibre）。
@@ -49,4 +49,4 @@ tags: [錯誤監控, error tracking, Sentry, GlitchTip, window.onerror, unhandle
 - MapLibre GL JS〈Map〉事件表（error、webglcontextlost、webglcontextrestored）：https://maplibre.org/maplibre-gl-js/docs/API/classes/Map/
 - Mapbox GL JS Map：https://docs.mapbox.com/mapbox-gl-js/api/map/
 - GlitchTip 文件：https://glitchtip.com/documentation
-- 相關卡：[09-07](../09-design-system/09-07-loading-data-time-and-stale.md)、[10-06](10-06-heartbeat-is-not-health.md)、[10-07](10-07-deadman-switch-outside-monitored-system.md)、[10-08](10-08-alert-dedup-recovery-and-root-cause.md)、[10-24](10-24-csp-for-map-sites.md)、[11-07](../11-extras/11-07-geolocation-my-location-permissions.md)、[11-11](../11-extras/11-11-attribution-and-privacy-disclosure.md)。
+- 相關卡：[09-07](../09-design-system/09-07-loading-data-time-and-stale.md)、[10-24](10-24-csp-for-map-sites.md)、[11-07](../11-extras/11-07-geolocation-my-location-permissions.md)、[11-11](../11-extras/11-11-attribution-and-privacy-disclosure.md)。

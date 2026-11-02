@@ -1,6 +1,6 @@
 {
   "name": "gis-map-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "做 GIS 圖台的參考包：台灣開放資料 API 接法、底圖、動態效果、色票、效能、設計系統與踩坑卡片；可引導起步、中途諮詢、掃描專案找改善點",
   "author": {
     "name": "Migu Cheng",
