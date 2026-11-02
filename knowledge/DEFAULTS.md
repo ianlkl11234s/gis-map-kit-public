@@ -25,3 +25,4 @@ skill、README、卡片提到下列項目時，**數值與說法以本表為準�
 | QA 狀態用詞 | Pass／Fail／未驗證 |
 | 驗收四題 | 見 skills/gis-workshop/references/qa-checklist.md；「這個結果不能說明什麼？」必答 |
 | 資料取得 | 先自己從公開來源下載；做不到時用講師提供的下載連結或本機資料 |
+| 北科大 Week 09 備援資料 | https://ntut-urban-data-course.itsmigu.com/downloads/week09-data.zip （64 KB）：`flow-bus/` 臺北市公車 2026-10-28 07:00–09:00 每 5 分鐘位置（299 路點位與已切好的段、四條路線點位）；`change-population/` 臺北市 12 區界線＋2015、2025 戶籍人口。每個資料夾附 SOURCES.md（來源、授權、資料時間、欄位） |

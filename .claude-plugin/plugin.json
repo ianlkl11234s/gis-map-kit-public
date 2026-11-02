@@ -1,6 +1,6 @@
 {
   "name": "gis-map-kit",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "做 GIS 網頁地圖的參考包：台灣開放資料、底圖、動態、色票、效能與踩坑知識卡，加五個 skill——gis-system 拆議題找資料、gis-start 從零規劃起步、gis-advisor 解決做到一半的問題、gis-review 上線前唯讀檢查、gis-workshop 限時課堂陪做",
   "author": {
     "name": "Migu Cheng",
