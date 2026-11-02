@@ -10,7 +10,7 @@ description: 對已經做出來的網頁地圖／GIS 圖台做上線前全面檢
 2. 只有找到證據（檔案:行號）才列為問題；每項附卡片編號。
 3. 缺值、過期、錯誤被畫成 0 或正常值，一律列必修（05-04、09-07）。
 4. 看到疑似金鑰只寫檔案與行號，值用 <REDACTED>。
-5. 主對話只讀相關主題的 `_index.md`，不逐張讀卡；讀卡交給 `gis-auditor`。
+5. 主對話只讀相關主題的 `_index.md`，不逐張讀卡；讀卡交給 `gis-map-kit:gis-auditor` 子代理。
 
 知識庫在本 plugin 根目錄的 `knowledge/`（本檔往上兩層）；優先用 Read 讀已知路徑、用 Grep 搜關鍵字，Glob 若被權限擋下就改用這兩個。
 
@@ -39,7 +39,7 @@ description: 對已經做出來的網頁地圖／GIS 圖台做上線前全面檢
 
 不掃 00-system-thinking 與 13-author-taste（設計風格不是問題）。
 
-把篩好的卡依主題分成最多 3 組，用 `gis-auditor` 子代理平行掃描。每組給它：專案路徑、stack、**這組的主題清單與卡片 id 清單**，以及 `knowledge/` 的**絕對路徑**（本 skill 的 base directory 往上兩層；子代理不知道 plugin 裝在哪）。讀卡、搜尋都由子代理做，主對話只收它回報的命中表。
+把篩好的卡依主題分成最多 3 組，用 `gis-map-kit:gis-auditor` 子代理（subagent_type 填這個全名）平行掃描。每組給它：專案路徑、stack、**這組的主題清單與卡片 id 清單**，以及 `knowledge/` 的**絕對路徑**（本 skill 的 base directory 往上兩層；子代理不知道 plugin 裝在哪）。讀卡、搜尋都由子代理做，主對話只收它回報的命中表。
 
 ## 步驟 3：報告
 

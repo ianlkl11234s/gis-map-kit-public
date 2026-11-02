@@ -46,8 +46,9 @@ tags: [總表, 動態, 時間軸, 時間訂閱, 節流, 預載, 回放, 缺段, 
 
 ## 相關主題
 - 動態圖層的特效：[04-00](../04-effects-catalog/04-00-effects-index.md)。
-- 事件圖層的固定上限凍結：[12-01](../12-domain-pitfalls/12-01-timestamp-timezone-offset.md)。
+- 軌跡時間戳差 ±8 小時：[12-01](../12-domain-pitfalls/12-01-timestamp-timezone-offset.md)。
 - 移動物件與軌跡的規模：[14-07](../14-scale-density/14-07-moving-objects-and-trails-at-scale.md)。
+
 
 ## 出處
 各項依據見對應卡片。

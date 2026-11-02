@@ -31,7 +31,7 @@ tags: [data.gov.tw, 授權, OGDL, 顯名標示, metadata API, User-Agent, 403, �
    - 下載網址常是「檔案清單 API」：先拿到一串檔名與 url，再逐一下載，預估量要算兩段。
 2. 出處寫釋出機關，不寫 data.gov.tw；格式「機關、年份、資料名稱（版本）、依政府資料開放授權條款第 1 版釋出」。圖台應有每個圖層的來源 footer。
 3. 授權「未載明」時：照常記為未載明，並於圖層註明；不要自己推定為某一授權。
-4. 偵測資料有無更新：用 metadata 比對（更新日期、檔名），見 [01-15](01-15-source-update-detection.md)。
+4. 偵測資料有無更新：用 metadata 比對（更新日期、檔名）。
 5. 注意部分 access_url 夾帶他人的 api_key，不要留存或公開。
 
 ## 怎麼偵測
@@ -40,5 +40,4 @@ tags: [data.gov.tw, 授權, OGDL, 顯名標示, metadata API, User-Agent, 403, �
 
 ## 出處
 - 官方：data.gov.tw/license（授權條款）。
-- 相關卡：[01-15](01-15-source-update-detection.md)。
 

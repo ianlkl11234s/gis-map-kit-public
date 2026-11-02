@@ -36,7 +36,7 @@ System Map 只存節點和連線，沒有來源、證據狀態與對應資料；
 - verb_label（例：increases runoff／depends on／drains to）
 - directed（boolean）, polarity?（+/-，僅因果模型）, delay?, mechanism?
 - evidence_status（observed／source_supported／hypothesized／simulated／unknown）
-- confidence_basis（文字理由，不強製無根據的機率值）, source_ids[], dataset_ids[]
+- confidence_basis（文字理由，不強制填無根據的機率值）, source_ids[], dataset_ids[]
 - 必填：relationship_type、verb_label、directed、evidence_status、confidence_basis
 
 **Source**

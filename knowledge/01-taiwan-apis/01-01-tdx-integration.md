@@ -24,7 +24,7 @@ tags: [TDX, 公車, YouBike, 台鐵, 國道, OAuth2, 429, StationUID, LastUpdate
 - `LastUpdateTime` 是 API 快取刷新時間，不是事件實際變動時間。
 
 ## 解法
-1. 後端取得 token 並快取到期前重用；前端永遠不碰 client secret（見 [01-08](01-08-token-secret-throttle-backoff.md)）。
+1. 先到 tdx.transportdata.tw 註冊會員、經管理員審核，取得 Client Id／Secret 換 token；不帶 key 呼叫會回 401「Valid API Key Required」（2026-11-02 實測）。審核時間官方未寫，課堂使用要提前辦。後端取得 token 並快取到期前重用；前端永遠不碰 client secret（見 [01-08](01-08-token-secret-throttle-backoff.md)）。
 2. 同一把金鑰的所有呼叫走同一個全域節流器（例如每秒 4 次），429／401 分開處理，做法見 [12-12](../12-domain-pitfalls/12-12-upstream-blocking-rate-limits.md)。
 3. 站牌、路線 join 用 `StationUID`／`RouteUID`，不要用城市內才唯一的 ID。
 4. 新鮮度看資料本身的觀測時間，不看 API 的 UpdateTime。

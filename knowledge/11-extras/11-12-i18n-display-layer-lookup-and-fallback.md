@@ -6,7 +6,7 @@ kind: pattern
 scope: public
 evidence: Implemented
 stacks: [any]
-tags: [i18n, 多語系, 翻譯, t(), fallback, 退回原文, 顯示層, 識別字, 地名英譯, 羅馬拼音, 外文欄位, 機器翻譯, setLanguage, 底圖地名, 長字, ellipsis, 防倒退]
+tags: [i18n, 多語系, 翻譯, t(), fallback, 退回原文, 顯示層, 識別字, 地名英譯, 羅馬拼音, 外文欄位, 機器翻譯, setLanguage, 底圖地名, 長字, ellipsis]
 ---
 
 ## 原則
@@ -33,8 +33,7 @@ tags: [i18n, 多語系, 翻譯, t(), fallback, 退回原文, 顯示層, 識別�
 5. 上游外文欄位先抽查再用，只採用可信的子集。
 6. 長字版面先定規則：中文主名不換行、不縮；外文副標空間不夠時只省略外文（`text-overflow: ellipsis`）；會切換長度的按鈕給固定或最小寬度。右到左語言要另外處理 `dir="rtl"` 與版面鏡像，成本高，真的需要再做。
 7. 語言偵測順序：`?lang=` → 使用者上次選擇 → `navigator.languages` → 預設語言；分享網址只在非預設語言時帶 `lang=`（canonical 與 hreflang 見 [11-02](11-02-robots-sitemap-soft404-canonical.md)）。
-8. 底圖地名跟著語言：Mapbox 用 `language` 選項與 `setLanguage`（只重抓圖磚、不重載樣式）；其他引擎改樣式的 `text-field` 用對應語言欄位（[02-05](../02-basemaps/02-05-style-customization-by-code.md)）。
-9. 防倒退：腳本掃描「去掉註解後仍含中文的程式行數」，已翻完的檔案列入嚴格區塊、數字只能下降；每批翻譯校對兩輪並維護用語表。
+8. 底圖地名跟著語言：Mapbox 樣式用 `language` 選項與 `setLanguage`（只重抓圖磚、不重載樣式）；MapLibre 搭 OpenFreeMap 等向量樣式，改樣式的 `text-field` 用對應語言欄位（[02-05](../02-basemaps/02-05-style-customization-by-code.md)）。
 
 ## 怎麼偵測
 - 通用：切成 `?lang=en` 後，側欄或 popup 還有中文；某些地方顯示 key 名稱；分享英文頁的連結打開變中文；長英文名把面板撐寬；底圖地名語言與介面不一致。
@@ -45,6 +44,6 @@ tags: [i18n, 多語系, 翻譯, t(), fallback, 退回原文, 顯示層, 識別�
 
 ## 出處
 - i18next 等函式庫的 fallback 機制文件；Mapbox GL JS `language` 選項與 `setLanguage`；MDN `navigator.languages`、`text-overflow`；政府公布的地名英譯／羅馬拼音資料（台灣為內政部）。
-- 相關卡：[02-05](../02-basemaps/02-05-style-customization-by-code.md)、[09-08](../09-design-system/09-08-text-hierarchy-dark-basemap.md)、[08-10](../08-multi-layer/08-10-multi-country-country-selector-no-cross-mix.md)、[11-02](11-02-robots-sitemap-soft404-canonical.md)。
+- 相關卡：[02-05](../02-basemaps/02-05-style-customization-by-code.md)、[09-08](../09-design-system/09-08-text-hierarchy-dark-basemap.md)、[11-02](11-02-robots-sitemap-soft404-canonical.md)。
 - 實例（mini-taiwan-pulse）：[多語系路線圖](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/features/i18n/ROADMAP.md)、[地名對照表產生腳本](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/scripts/i18n/gen-place-names.ts)。
 

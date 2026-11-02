@@ -22,8 +22,7 @@ tags: [總表, 效能, 量測, 大量點, 重繪, 記憶體, 首屏, RPC, 載入
 ### 點與軌跡渲染
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
 |---|---|---|
-| 一個圖層點數很多、縮放時卡 | [07-02](07-02-many-points-rendering.md) | 低縮放縮小點徑並取消描邊，依需求改 heatmap、cluster 或 GPU instancing |
-| 數千條軌跡要同時畫 | [07-05](07-05-batched-trails-min-heap-eviction.md) | 單一 mesh、固定 slot，draw call 恆為 1，池滿用 min-heap 逐出 |
+| 一個圖層點數很多、縮放時卡 | [07-02](07-02-many-points-rendering.md) | 數量級門檻照 [14-02](../14-scale-density/14-02-point-count-thresholds.md)（低縮放換熱區、延後出點）；要動畫或 3D 用 GPU instancing；點徑隨縮放只限該卡定義的特例 |
 | 軌跡動畫一格一格跳 | [07-06](07-06-float32-timestamp-precision.md) | 時間戳存相對值，不把 unix 絕對秒放進 Float32 |
 
 ### 重繪與更新粒度
@@ -36,14 +35,12 @@ tags: [總表, 效能, 量測, 大量點, 重繪, 記憶體, 首屏, RPC, 載入
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
 |---|---|---|
 | 查詢慢、資料量大 | [07-07](07-07-backend-preaggregate-and-data-path-triage.md) | 先分流成靜態快照、預彙總表、即時 RPC，改之前用 EXPLAIN 量 |
-| 對外 RPC 可能被拖垮或被截斷 | [07-08](07-08-public-rpc-timeout-clamp-rowcap.md) | 明寫逾時、函式內 clamp 範圍與筆數，前端對列數上限零容忍 |
 
 ### 首屏與記憶體
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
 |---|---|---|
 | 首屏太重 | [07-09](07-09-bundle-size-lazy-load-on-demand.md) | 重函式庫與明細動態 import，進入視窗才載資料，重解析放 Worker |
 | 切底圖或重建圖層後越用越慢 | [07-10](07-10-memory-leaks-listeners-contexts.md) | 每個 listener 與 GPU 資源都要對應釋放，重複操作 N 次量斜率 |
-| 大回應解析後記憶體爆 | [07-11](07-11-big-response-memory-blowup-streaming.md) | 寫磁碟後串流逐列處理，重工作放子行程 |
 
 ### 非純效能：載入狀態與個資
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |

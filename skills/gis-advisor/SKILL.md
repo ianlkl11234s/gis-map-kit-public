@@ -1,6 +1,6 @@
 ---
 name: gis-advisor
-description: 回答網頁地圖／GIS 圖台做到一半遇到的具體問題，附知識卡編號與證據等級；只要問題和網頁地圖的圖層、底圖、面量圖（choropleth）、配色、圖例、資料顯示有關，先載入本 skill 再回答，不要只憑一般知識。用於 MapLibre、Mapbox GL、Leaflet、deck.gl、OpenLayers、Three.js 地圖的症狀與做法：顯示 0 或缺值、圖例顏色對不上、時間差 8 小時、點太多卡頓、圖層消失、換底圖、PMTiles 不顯示、API 429／403、手機 popup 點不到、風場航班船舶衛星資料，以及軌跡怎麼畫、色階怎麼選、該不該用 PMTiles 這類選型。從零開始選技術用 gis-start；上線前全面檢查用 gis-review；拆議題、找資料用 gis-system；限時課堂用 gis-workshop。
+description: 回答網頁地圖／GIS 圖台做到一半遇到的具體問題，附知識卡編號與證據等級；做到一半遇到的具體問題（症狀、怎麼修、怎麼選，例如圖層、底圖、面量圖（choropleth）、配色、圖例、資料顯示）就先載入本 skill 再回答，不要只憑一般知識。用於 MapLibre、Mapbox GL、Leaflet、deck.gl、OpenLayers、Three.js 地圖的症狀與做法：顯示 0 或缺值、圖例顏色對不上、時間差 8 小時、點太多卡頓、圖層消失、換底圖、PMTiles 不顯示、API 429／403、手機 popup 點不到、風場航班船舶衛星資料，以及軌跡怎麼畫、色階怎麼選、該不該用 PMTiles 這類選型。從零開始怎麼做用 gis-start；上線前全面檢查用 gis-review；拆議題、找資料用 gis-system；限時課堂用 gis-workshop。
 ---
 
 # gis-advisor：做到一半的諮詢
@@ -9,7 +9,7 @@ description: 回答網頁地圖／GIS 圖台做到一半遇到的具體問題，
 1. 回答附卡片編號與證據等級；General／Candidate 講成「一般建議」，知識庫沒有就照實說。
 2. 先在使用者程式裡確認原因，不只憑症狀下結論。
 3. 缺值、過期、錯誤不能變成 0、正常值或合成座標；看到就指出（05-04、09-07）。
-4. 真實資料要有來源、授權、資料時間；不建議沒帶 key 的 CARTO 圖磚（整片浮水印，02-02），免 key 底圖用 OpenFreeMap positron。
+4. 真實資料要有來源、授權、資料時間；不建議沒帶 key 的 CARTO 圖磚（整片浮水印，02-02）；預設底圖照 `knowledge/DEFAULTS.md`（OpenFreeMap dark，需要淺色用 positron）；給範例程式時 `style` 一律寫 dark 的網址，使用者明確要淺色才換 positron。
 5. 卡片標「待官方驗證」的配額、價格、授權，請使用者查官方頁面。
 
 知識庫在本 plugin 根目錄的 `knowledge/`（本檔往上兩層）；優先用 Read 讀已知路徑、用 Grep 搜關鍵字，Glob 若被權限擋下就改用這兩個。
@@ -36,4 +36,4 @@ description: 回答網頁地圖／GIS 圖台做到一半遇到的具體問題，
 ## 原則
 
 - 領域資料（風場、海流、航班、船舶、衛星、落雷、地震）的問題，先看 `12-domain-pitfalls` 的 12-00，再看效果卡。
-- 問到「用哪個底圖／SDK／配色／要不要自動播放」這類風格選擇時，先讀 `13-author-taste` 的 13-00，回答時講明「作者偏好是…，理由是…」，並說使用者可以有自己的選擇；正確性問題不受品味影響。
+- 問到預設底圖、SDK 時，答案以 `knowledge/DEFAULTS.md` 為準（底圖 OpenFreeMap dark、SDK MapLibre）；13-00 只用來補充「為什麼偏好深色」等理由。問到配色、字型、要不要自動播放這類風格選擇時，讀 `13-author-taste` 的 13-00，講明「作者偏好是…，理由是…」，並說使用者可以有自己的選擇；正確性問題不受品味影響。

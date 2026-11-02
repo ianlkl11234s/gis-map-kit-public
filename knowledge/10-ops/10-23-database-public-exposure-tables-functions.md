@@ -31,7 +31,7 @@ tags: [Supabase, PostgREST, anon, authenticated, RLS, GRANT, REVOKE, PUBLIC, def
 4. **既有函式**不能直接 `REVOKE FROM PUBLIC`：先盤點只靠 PUBLIC 的服務角色，明確 GRANT 給它們，在交易裡測試後再收回；也可用 `ALTER DEFAULT PRIVILEGES` 讓之後新建的函式不再預設授予 PUBLIC。
 5. **寫入路徑**：匿名唯讀；寫入要求登入再加站主檢查（RLS policy 或函式內檢查）。
 6. **service role／secret key 永不進前端**（見 [10-04](10-04-public-token-vs-secret.md)、[10-21](10-21-secrets-in-bundle-and-dev-server.md)）。
-7. **定期跑稽核查詢**（下節），並把結果與上一次比較。對外函式的逾時與範圍上限見 [07-08](../07-performance/07-08-public-rpc-timeout-clamp-rowcap.md)。
+7. **定期跑稽核查詢**（下節），並把結果與上一次比較。對外函式要在函式內限制逾時、範圍與筆數。
 
 ## 怎麼偵測
 以下 SQL 適用 Supabase／PostgREST；其他框架概念通用（列出公開角色可碰到的東西）。
@@ -58,5 +58,5 @@ ORDER BY 1, 2 LIMIT 200;
 ## 出處
 - PostgreSQL 文件：GRANT（PUBLIC 為所有角色的隱含群組，含之後建立者）https://www.postgresql.org/docs/current/sql-grant.html ；函式預設 EXECUTE 給 PUBLIC 見 Privileges 一節 https://www.postgresql.org/docs/current/ddl-priv.html ；ALTER DEFAULT PRIVILEGES https://www.postgresql.org/docs/current/sql-alterdefaultprivileges.html 。
 - Supabase 文件〈Securing your API〉（對所有經 Data API 公開的表開 RLS；RLS 不適用函式，只對需要的角色授 execute；撤銷 PUBLIC 的 execute 會影響其他 schema 的函式）https://supabase.com/docs/guides/api/securing-your-api ；API keys 與 Row Level Security 說明同站。
-- 相關卡：[07-08](../07-performance/07-08-public-rpc-timeout-clamp-rowcap.md)、[07-14](../07-performance/07-14-open-data-pii-column-exclusion.md)、[10-04](10-04-public-token-vs-secret.md)、[10-21](10-21-secrets-in-bundle-and-dev-server.md)。
+- 相關卡：[07-14](../07-performance/07-14-open-data-pii-column-exclusion.md)、[10-04](10-04-public-token-vs-secret.md)、[10-21](10-21-secrets-in-bundle-and-dev-server.md)。
 

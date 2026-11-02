@@ -29,21 +29,21 @@ tags: [checklist, 新增圖層, 驗收, 上線, onboarding, All Off, 資料驗�
 - 已發布的資產 URL 視為契約，不隨意搬動；新資產路徑要同步反向代理與部署腳本。
 
 **2. 接線——大部分自動**
-- 登記一筆（見 [08-01](08-01-layer-registry-single-source.md)）；型別強制補齊的由編譯器擋，空殼值由完整性測試擋（[08-02](08-02-registry-completeness-tests-and-ledger.md)）。
+- 登記一筆；型別強制補齊的由編譯器擋，空殼值由完整性測試擋。
 - loader 包載入狀態登記（切換圖層、切日都要有可見的載入提示）。
 - 動態圖層：遵守時間訂閱規則（[03-02](../03-dynamics/03-02-time-in-reactive-state-rerender-storm.md)、[03-03](../03-dynamics/03-03-subscription-granularity-and-throttle.md)），參數不收 `currentTime`。
 - 疊放位置有決定（[08-05](08-05-layer-stacking-order.md)）。
 
 **3. UX 準入——部分自動**
-- 透明度、圖例、popup、選單（[09-02](../09-design-system/09-02-layer-ux-four-iron-rules.md)）；哪些由測試守、哪些要人工見 [08-02](08-02-registry-completeness-tests-and-ledger.md)。
-- 點層的半徑、透明度、是否 cluster 依資料密度套基準表，不憑感覺。
+- 透明度、圖例、popup、選單（[09-02](../09-design-system/09-02-layer-ux-four-iron-rules.md)）；哪些由測試守、哪些要人工點，要分開標明。
+- 點層的半徑、透明度、是否 cluster 依資料密度決定（見 [14-00](../14-scale-density/14-00-scale-density-decision-table.md)），不憑感覺。
 
 **4. 瀏覽器單層驗收——人工**
 - 先按「全部關閉」，**只開新圖層**，避免被別的圖層干擾判斷。
 - 看邊界縮放（最小／最大 zoom）、時間軸兩端、點一次 popup、拉兩端透明度、切到另一個國家／面板再回來。
 - 動態圖層：全關＋暫停，確認 render 次數 = 0（[07-03](../07-performance/07-03-hidden-layer-paint-keeps-map-busy.md)）。
 
-**5. 跨 repo／資料契約對齊——人工**
+**5. 跨 repo／資料契約對齊——人工（資料與前端分屬不同 repo 時才需要）**
 - 上游資料產生端的交接文件、下游反向引用、有破壞性變更先開決策紀錄。
 - 順序：上游先動、下游後動，反過來會讓前端硬依賴不存在的欄位。
 

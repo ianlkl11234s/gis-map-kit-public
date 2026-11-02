@@ -42,12 +42,13 @@ tags: [MapLibre, OpenFreeMap, 最小範例, 骨架, GeoJSON, addSource, addLayer
   <div id="legend">
     <div><span class="dot" style="background:#e4572e"></span>數量 ≥ 10</div>
     <div><span class="dot" style="background:#4c8bf5"></span>數量 &lt; 10</div>
+    <div><span class="dot" style="background:#9e9e9e"></span>無資料</div>
   </div>
   <script>
     const map = new maplibregl.Map({
       container: 'map',
-      // OpenFreeMap：免 key、看得到街道；attribution 由樣式自動帶出，不要關掉
-      style: 'https://tiles.openfreemap.org/styles/positron',
+      // OpenFreeMap dark：免 key、看得到街道；需要淺色改 styles/positron；attribution 由樣式自動帶出，不要關掉
+      style: 'https://tiles.openfreemap.org/styles/dark',
       center: [121.0, 23.7],  // [經度, 緯度]
       zoom: 6.5,
     });
@@ -60,7 +61,10 @@ tags: [MapLibre, OpenFreeMap, 最小範例, 骨架, GeoJSON, addSource, addLayer
         source: 'pts',
         paint: {
           'circle-radius': 6,
-          'circle-color': ['case', ['>=', ['get', 'count'], 10], '#e4572e', '#4c8bf5'],
+          'circle-color': ['case',
+            ['==', ['get', 'count'], null], '#9e9e9e',   // 缺值獨立一色，不併入任何級距
+            ['>=', ['get', 'count'], 10], '#e4572e',
+            '#4c8bf5'],
           'circle-stroke-color': '#fff',
           'circle-stroke-width': 1,
         },
@@ -82,11 +86,11 @@ tags: [MapLibre, OpenFreeMap, 最小範例, 骨架, GeoJSON, addSource, addLayer
 
 重點：
 1. **`center` 與 GeoJSON 座標都是 [經度, 緯度]**（[15-02](15-02-geojson-structure-and-bad-files.md)）。
-2. **圖例的顏色與門檻和 `circle-color` 寫同一組值**；改了一邊忘了另一邊，是最常見的圖例錯誤（[05-08](../05-color/05-08-legend-key-mismatch.md)）。
+2. **圖例的顏色與門檻和 `circle-color` 寫同一組值**，「無資料」也要有自己的圖例項；改了一邊忘了另一邊，是最常見的圖例錯誤（[05-08](../05-color/05-08-legend-key-mismatch.md)）。
 3. **popup 用 `textContent`／`setDOMContent`**，不要把資料欄位直接塞進 `setHTML`，避免資料裡的 HTML 被執行。
-4. **缺值顯示「無資料」**，不要顯示成 0（[05-04](../05-color/05-04-null-is-not-zero-color.md)）。
+4. **缺值顯示「無資料」**，不要顯示成 0；骨架用色階沒用到的中性灰，進階面圖層才改斜線（[05-04](../05-color/05-04-null-is-not-zero-color.md)）。
 5. **底圖 attribution 保持開啟**：MapLibre 會從 OpenFreeMap 的圖磚設定自動顯示「OpenFreeMap © OpenMapTiles Data from OpenStreetMap」。OpenFreeMap 免費、不限流量，但沒有服務保證（as-is，可能無預警停止），正式站要有備案。MapLibre 官方示範樣式（`demotiles.maplibre.org`）在城市尺度只看得到海陸、看不到街道，只當連不上時的備援。底圖選型與授權見 [02-02](../02-basemaps/02-02-basemap-selection-decision.md)，標示見 [02-07](../02-basemaps/02-07-attribution.md)。
-6. 資料超過數 MB 或點數上萬，改成 PMTiles（[06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md)），點太多時的畫法見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)。
+6. 資料大到載入變慢再改成 PMTiles（判斷方式見 [06-01](../06-data-formats/06-01-format-selection-decision.md)，轉檔見 [06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md)）；點數門檻與點太多時的畫法見 [14-02](../14-scale-density/14-02-point-count-thresholds.md)。
 
 ## 怎麼偵測
 - 通用：地圖上有色點但沒有圖例；點下去沒反應；城市尺度的地圖用了只有海陸的示範樣式，看不到街道；右下角沒有底圖 attribution。

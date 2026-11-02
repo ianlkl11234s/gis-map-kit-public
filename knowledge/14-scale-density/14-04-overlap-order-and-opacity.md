@@ -31,14 +31,14 @@ tags: [重疊, 遮蔽, sort-key, circle-sort-key, line-sort-key, 繪製順序, �
 4. **透明度依密度**：點越多預設越透明（[14-02](14-02-point-count-thresholds.md) 表）；疊加型資料先估重疊層數再回推單層 alpha（[05-07](../05-color/05-07-alpha-stacking-and-fill-opacity.md)）。
 5. **多層熱區同開時每層再乘一個倍率**（例：0.7），只剩一層時恢復；判斷依據是圖層開關，不看當下縮放。
 6. **熱區的 weight 要壓低值**：大量低值點疊加會看起來像極端值（例：雨量熱區小雨站疊成豪雨）。
-7. 點的描邊用底圖色細縫，讓相鄰點分開；移動物件改用對比描邊（[09-10](../09-design-system/09-10-map-symbol-size-tiers.md)）。
+7. 點的描邊用底圖色細縫，讓相鄰點分開（[09-10](../09-design-system/09-10-map-symbol-size-tiers.md)）。
 
 ## 怎麼偵測
 - 通用：在最密的區域拉近，看小值或高值是否被蓋住；同開兩層熱區看是否整片飽和。
 - 搜尋：比例符號圖層（`circle-radius` 用 `["get", …]` 或 `sqrt`）沒有 `circle-sort-key`；分級線（`line-color` 用 `step`／`match` 數值）沒有 `line-sort-key`；`heatmap-weight` 是常數 1 但資料有數值欄位（適用 stack：mapbox-gl、maplibre；deck.gl 看資料排序後再傳入）。
 
 ## 出處
-- 官方：Mapbox GL style spec `circle-sort-key`、`line-sort-key`、`symbol-sort-key`（值越大越後畫）。
+- 官方：MapLibre／Mapbox GL style spec `circle-sort-key`、`line-sort-key`、`symbol-sort-key`（值越大越後畫）。
 - 圖層之間的順序：[08-05](../08-multi-layer/08-05-layer-stacking-order.md)；alpha 疊加公式：[05-07](../05-color/05-07-alpha-stacking-and-fill-opacity.md)。
 - 實例：[mini-taiwan-pulse 分析結果的 sort-key 設定](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/research/warehouseResultStyle.ts)。
 - 實例：[分級線高值在上、缺值最下](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/data/busCrowdingSimStyle.ts)。

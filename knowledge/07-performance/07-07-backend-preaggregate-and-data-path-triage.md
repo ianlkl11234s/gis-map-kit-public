@@ -30,7 +30,7 @@ tags: [預彙總, pre-aggregate, matview, RPC, 快照, CDN, cron, advisory lock,
 | 月更或更慢、無參數、非時序 | 預匯出成靜態檔，走 CDN（O(1)） |
 | 半動態、共享快照 | 物件儲存快照＋指標檔 |
 | 時序或大表、可預先算 | **預彙總表**＋薄 RPC |
-| 真動態、參數多 | RPC，但要有逾時、範圍上限（見 [07-08](07-08-public-rpc-timeout-clamp-rowcap.md)） |
+| 真動態、參數多 | RPC，但要有逾時、範圍上限 |
 
 預彙總表做法：
 1. 先 `EXPLAIN (ANALYZE, BUFFERS)` 確認是 plan 問題還是資料量，先量再改（見 [07-01](07-01-performance-budget-and-measurement.md)）。觸發門檻例：RPC 超過 1 秒或超過 1 萬列。
@@ -48,6 +48,6 @@ Supabase／PostgREST 專用細節：函式要明寫 `SET statement_timeout`（po
 
 ## 出處
 - PostgreSQL EXPLAIN、pg_cron、advisory lock 文件。
-- 相關卡：[07-01](07-01-performance-budget-and-measurement.md)、[07-08](07-08-public-rpc-timeout-clamp-rowcap.md)。
+- 相關卡：[07-01](07-01-performance-budget-and-measurement.md)。
 - 實例：[mini-taiwan-pulse 預彙總指南](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/supabase-optimization.md)；[gis-data-collectors 預彙總 SQL 範本](https://github.com/ianlkl11234s/gis-data-collectors/blob/e0beb720e2abd9fc35b674ef33e83d62df5d665b/docs/sql/matview_disaster_alerts.sql)（同目錄另有國道壅塞、船舶軌跡等）。
 

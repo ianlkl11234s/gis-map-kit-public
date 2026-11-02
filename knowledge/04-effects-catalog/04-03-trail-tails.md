@@ -23,7 +23,7 @@ tags: [trail, 彗尾, TripsLayer, line-gradient, 光軌, 批次, draw call, 歷�
 
 | 做法 | 適合 | 代價 |
 |---|---|---|
-| 原生 `line-gradient`／`line-trim-offset` | 單條或少數線、全線同步漸層 | 每條線時間不同就做不到；需 `lineMetrics:true` |
+| 原生 `line-gradient`／`line-trim-offset`（後者 Mapbox 限定） | 單條或少數線、全線同步漸層 | 每條線時間不同就做不到；需 `lineMetrics:true` |
 | deck.gl `TripsLayer` | 數萬條、時間軸拖曳零延遲 | `currentTime` 是 uniform，**data 引用必須穩定**，否則每次重建 GPU buffer；不貼 Mapbox globe |
 | Three.js 每物件一條 line，自訂 shader（尾 alpha 0→頭 1） | 數十到數百個 | 每條一個 draw call |
 | Three.js 批次光軌：全部合成一條 line strip，每條佔固定 slot，slot 間以 opacity=0 的 guard 頂點隔開，per-vertex alpha | 數千條同時在空中 | slot 上限與逐出策略要設計（最接近抵達者先踢；用 min-heap，不要線性掃描） |

@@ -9,7 +9,7 @@
     {
       "name": "gis-map-kit",
       "source": "./",
-      "description": "做 GIS 圖台的參考包：台灣開放資料 API 接法、底圖、動態效果、色票、效能、設計系統與踩坑卡片；含限時課堂用的 gis-workshop"
+      "description": "做 GIS 網頁地圖的參考包：台灣開放資料、底圖、動態、色票、效能與踩坑知識卡，加五個 skill——gis-system 拆議題找資料、gis-start 從零規劃起步、gis-advisor 解決做到一半的問題、gis-review 上線前唯讀檢查、gis-workshop 限時課堂陪做"
     }
   ]
 }

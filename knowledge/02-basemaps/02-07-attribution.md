@@ -20,7 +20,7 @@ tags: [attribution, 版權, logo, Mapbox, OSM, CARTO, ODbL, 顯名標示, 手機
 - Mapbox：logo 與文字（© Mapbox、© OpenStreetMap、Improve this map）一定要顯示；文字可調色與字級但須可讀，logo 不能改樣式。
 - OSM 內容：ODbL 須可見可讀的標示；收合時仍須能找到授權資訊。
 - CARTO：須標 OSM 與 CARTO，且要「顯眼」。
-- 政府開放資料：須顯名標示提供機關（見 [01-05](../01-taiwan-apis/01-05-data-gov-tw-and-license.md)）。。
+- 政府開放資料：須顯名標示提供機關（見 [01-05](../01-taiwan-apis/01-05-data-gov-tw-and-license.md)）。
 
 ## 解法
 1. 底圖版權與資料來源分開兩處：底圖版權用 SDK 的 attribution 控件（可關預設控件、改自訂 compact 版），資料來源放獨立的來源列或每個圖層的 popup／圖例 footer。

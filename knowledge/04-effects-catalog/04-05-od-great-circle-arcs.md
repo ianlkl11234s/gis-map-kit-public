@@ -25,7 +25,7 @@ OD 弧線用球面線性插值（slerp）沿大圓細分，每條 24～64 段；
 2. 換日線：不要比對原始經度差；用 3D 向量或 atan2 分支處理。
 3. 弧高（拋物線抬升）與線寬可編碼流量；顏色編碼方向或類別。OD 表（只有起訖、沒有中間軌跡）只畫弧與流量，不做「物體沿弧移動」的假軌跡（見 [04-16](04-16-dont-fake-dynamics.md)）。
 4. 動態：用 uniform 驅動「沿弧生長」或「亮點沿弧跑」，所有弧合成一個 `LineSegments`（一個 draw call），前提是已處理好 globe 貼球（見 [04-13](04-13-custom-layer-on-globe.md)）。
-5. 平面小範圍、弧數少（< 數百）：原生 `line` + `line-trim-offset` 或 deck.gl `ArcLayer` 即可，不需要 custom layer。
+5. 平面小範圍、弧數少（< 數百）：原生 `line`（Mapbox 可加 `line-trim-offset`）或 deck.gl `ArcLayer` 即可，不需要 custom layer。
 
 ## 怎麼偵測
 - 通用：縮到 globe 視角，弧線穿過球；跨太平洋的弧走錯邊。

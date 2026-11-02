@@ -17,7 +17,7 @@ tags: [triggerRepaint, 效能, 節流, 暫停, 閒置, draw call, 量測, DPR, r
 
 ## 原因
 - custom layer 呼叫 `map.triggerRepaint()` 重畫的是**整張地圖**（底圖、地形、globe、所有 style layer 與所有 custom layer），不是自己那層。
-- 純裝飾的壁鐘動畫（呼吸、閃爍、極光）在暫停時也要求重繪。
+- 依掛鐘時間跑的純裝飾動畫（呼吸、閃爍、極光）在暫停時也要求重繪。
 - 優化常常打在錯的地方：靜態軌跡量、光球數量都不是瓶頸。
 
 ## 解法

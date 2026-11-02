@@ -10,7 +10,7 @@ tags: [GeoJSON, TopoJSON, MVT, PMTiles, FlatGeobuf, GeoParquet, COG, Arrow, 選�
 ---
 
 ## 原則
-選格式前先回答三問：資料會不會變、量大不大（用 DevTools 實測，不背門檻）、要不要依條件查詢；再對照下表，不要因為格式新就選它。
+選格式前先回答三問：資料會不會變、量大不大（用 DevTools 實測；檔案大小門檻只當起點，見 [06-05](06-05-shrink-geometry-precision-simplify-columns.md)）、要不要依條件查詢；再對照下表，不要因為格式新就選它。
 
 ## 症狀
 - 首屏卡在下載一個幾十 MB 的 GeoJSON。
@@ -23,7 +23,7 @@ tags: [GeoJSON, TopoJSON, MVT, PMTiles, FlatGeobuf, GeoParquet, COG, Arrow, 選�
 ## 解法
 決策主幹只有三問，依序回答：
 1. **會不會變？** 不會或很少 → 靜態檔；會 → 要有更新機制（換檔名、指標檔，或後端服務）。
-2. **量大不大？** 以 DevTools 量到的首屏下載量與拖曳 FPS 判斷，不要背檔案大小門檻；小量 GeoJSON 通常最省事。
+2. **量大不大？** 以 DevTools 量到的首屏下載量與拖曳 FPS 判斷；檔案大小的起點門檻在 [06-05](06-05-shrink-geometry-precision-simplify-columns.md)，點數門檻在 [14-02](../14-scale-density/14-02-point-count-thresholds.md)，都以實測為準。小量 GeoJSON 通常最省事。
 3. **要不要依條件查詢？** 只顯示 → 預烘焙；要依時間或屬性篩選 → 後端動態出圖磚或 RPC。
 
 | 格式 | 適合 | 前端能否直接用 | 注意 |
@@ -45,10 +45,9 @@ tags: [GeoJSON, TopoJSON, MVT, PMTiles, FlatGeobuf, GeoParquet, COG, Arrow, 選�
 
 ## 怎麼偵測
 - 通用：首屏 Network 面板有單一超過數十 MB 的 .geojson／.json；拖曳地圖時 Main thread 長任務；同一份行政區邊界被多個檔案重複帶。
-- 搜尋：`addSource\(.*type:\s*['"]geojson['"]` 後面接大檔 URL；`\.geojson['"]` 的檔案大小（`find . -size +10M -name "*.geojson"`）（適用 stack：mapbox-gl、maplibre、leaflet、openlayers）。
+- 搜尋：`addSource\(.*type:\s*['"]geojson['"]` 後面接大檔 URL；`\.geojson['"]` 的檔案大小（`find . -size +2M -name "*.geojson"`）（適用 stack：mapbox-gl、maplibre、leaflet、openlayers）。
 
 ## 出處
 - 官方：PMTiles 規格與 protocol 外掛文件。FlatGeobuf、GeoParquet、COG、Arrow 為一般建議（General），非自己的實作經驗。
-- 相關卡：[06-13](06-13-postgis-dynamic-mvt-tiles.md)（PostGIS 動態 MVT 的做法與坑）。
 - 實例：[資料來源契約（動態走 RPC、統計走快照、靜態走 CDN 資產）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/development-rules.md)。
 

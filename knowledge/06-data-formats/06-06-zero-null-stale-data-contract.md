@@ -26,7 +26,7 @@ tags: [null, 0, 缺值, 未測, stale, Infinity, NaN, 兜底, COALESCE, JSON.par
 ## 解法
 1. 資料契約至少區分四種狀態：**有值**、**0（真的是零）**、**null／未測**、**未涵蓋（這個區域根本沒資料來源）**；再加上時間維度的 **stale（過期）**。
 2. 每個上游值域先看分布，列出代表缺值的魔術值（0、-99、(0,0)），在匯入層轉成 null 並記錄在文件；禁止對**觀測值**做 `?? 0`／`COALESCE(…,0)` 兜底，需要時註明理由。
-3. 顯示層：null、未涵蓋、stale 各有獨立視覺（灰色「無資料」、斜線、「更新於 …」徽章，見 [05-04](../05-color/05-04-null-is-not-zero-color.md)）。請求失敗、逾時、無回應也不是 0 或空資料：要顯示失敗並可重試（載入／失敗／無資料／過期四態見 [09-07](../09-design-system/09-07-loading-data-time-and-stale.md)）。時間序列缺段、動畫缺測保留 null（斷線或標「此時段無資料」），不補 0、不補舊值、不外推（見 [03-08](../03-dynamics/03-08-timeline-gaps-and-data-coverage.md)、[04-16](../04-effects-catalog/04-16-dont-fake-dynamics.md)）。
+3. 顯示層：null、未涵蓋、stale 各有獨立視覺：缺值與未涵蓋顯示成「無資料」並有獨立圖例項，畫法見 [05-04](../05-color/05-04-null-is-not-zero-color.md)；過期用「更新於 …」徽章。請求失敗、逾時、無回應也不是 0 或空資料：要顯示失敗並可重試（載入／失敗／無資料／過期四態見 [09-07](../09-design-system/09-07-loading-data-time-and-stale.md)）。時間序列缺段、動畫缺測保留 null（斷線或標「此時段無資料」），不補 0、不補舊值、不外推（見 [03-08](../03-dynamics/03-08-timeline-gaps-and-data-coverage.md)、[04-16](../04-effects-catalog/04-16-dont-fake-dynamics.md)）。
 4. 「更新時間」讀資料本身的觀測時間，不是抓取時間、不是 HTTP Last-Modified。每個即時圖層依來源的更新週期設過期門檻，分級（即時／延遲／過期／停更）與顯示見 [09-07](../09-design-system/09-07-loading-data-time-and-stale.md)。
 5. 匯出 JSON 時關閉非標準值（Python：`json.dump(..., allow_nan=False)`），並用嚴格 parser 驗證：`node -e "JSON.parse(require('fs').readFileSync(f,'utf8'))"`。
 6. 比值分色（A／B）先擋分母 0，避免 Infinity 進入色階表達式。

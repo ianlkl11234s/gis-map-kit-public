@@ -19,7 +19,7 @@ tags: [3D, 柱狀, extrusion, 光柱, 水位, 高度編碼, lerp, 量體, 水庫
 高度編碼本身有誤導風險（透視縮短、遮擋）；而資料每 5 分鐘才更新，直接寫入會跳。
 
 ## 解法
-1. 選型：棱柱用原生 `fill-extrusion`；模型用原生 `model` layer；需要發光、逐幀平滑、instancing 動畫才用 Three.js。
+1. 選型：棱柱用原生 `fill-extrusion`；模型用原生 `model` layer（Mapbox 限定）；需要發光、逐幀平滑、instancing 動畫才用 Three.js。
 2. 編碼規則：
    - 高度 ∝ 數值，**先正規化並夾住範圍**（例如出力率 0–1.5 clamp）；右偏分布用 sqrt。
    - 柱色用另一個維度（燃料別、警戒燈號），不要與高度編碼同一變數。
@@ -28,7 +28,7 @@ tags: [3D, 柱狀, extrusion, 光柱, 水位, 高度編碼, lerp, 量體, 水庫
 4. 單 draw call：`InstancedMesh`，per-instance 顏色與縮放。
 5. 靜態量體（水庫、車站柱）不要自己 `triggerRepaint`；資料／可見性變更時才喚醒重繪。
 6. 溫度曲面：BufferGeometry grid，海洋 cell 剔除三角形，頂點高度＝正規化溫度，色＝色帶；兩個相鄰時間 frame 之間逐頂點 lerp。
-7. 何時不用：只有 ≤ 十來個值要比較時，條狀圖或標籤更準；> 1,000 個點的密度改 h3／heatmap；使用者要精確讀值時必須提供 popup 數字。
+7. 何時不用：只有 ≤ 十來個值要比較時，條狀圖或標籤更準；量體多到上千個、互相遮擋時，改用 h3／heatmap 的密度表達；使用者要精確讀值時必須提供 popup 數字。
 8. 圖例要寫「高度 = 何者」，並標示是否為推估。
 
 ## 怎麼偵測

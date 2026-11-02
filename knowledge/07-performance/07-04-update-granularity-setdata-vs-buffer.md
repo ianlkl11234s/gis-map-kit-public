@@ -28,7 +28,7 @@ tags: [setData, typed array, buffer, InstancedMesh, per-instance attribute, disp
 3. **per-instance attribute**：每個實例要有獨立相位、顏色、大小時，用 instanced attribute 加 shader（`onBeforeCompile` 擴充內建材質），單一 draw call。
 4. **樣式 diff**：只對有變的 key 呼叫 `setPaintProperty`；隱藏圖層不寫（見 [07-03](07-03-hidden-layer-paint-keeps-map-busy.md)）。
 5. **部分上傳**：只標記有變的範圍（`addUpdateRange`），不要整條 buffer 重傳。
-6. **事件節流**：時間軸訂閱分粒度（每幀、10 Hz、1 Hz），重運算拆到低頻；用 ref 讀最新狀態，避免 callback 因 deps 改變而反覆重綁。改完用計時（[07-01](07-01-performance-budget-and-measurement.md)）比較前後，並用錄影確認沒有閃爍。
+6. **事件節流**：時間軸訂閱分粒度（逐幀、節流、只看日期；節流毫秒依資料粒度，見 [03-03](../03-dynamics/03-03-subscription-granularity-and-throttle.md)），重運算拆到低頻；用 ref 讀最新狀態，避免 callback 因 deps 改變而反覆重綁。改完用計時（[07-01](07-01-performance-budget-and-measurement.md)）比較前後，並用錄影確認沒有閃爍。
 
 ## 怎麼偵測
 - 通用：Performance 面板每幀有 `setData`／`bufferData`；回放時閃爍。

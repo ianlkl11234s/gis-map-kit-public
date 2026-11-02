@@ -52,9 +52,7 @@ tags: [總表, 維運, 部署, 金鑰, 監控, 告警, 排程, 搬家, 事故, �
 
 
 ## 相關主題
-- 對外 RPC 守門：[07-08](../07-performance/07-08-public-rpc-timeout-clamp-rowcap.md)。
 - 後端預先彙總：[07-07](../07-performance/07-07-backend-preaggregate-and-data-path-triage.md)。
-- 登記簿完整性測試：[08-02](../08-multi-layer/08-02-registry-completeness-tests-and-ledger.md)。
 - 網站被搜尋引擎與 AI 爬蟲讀取：[11-03](../11-extras/11-03-llms-txt-and-ai-crawler-policy.md)。
 
 ## 出處

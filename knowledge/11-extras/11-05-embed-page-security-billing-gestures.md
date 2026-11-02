@@ -14,7 +14,7 @@ tags: [嵌入, iframe, frame-ancestors, CSP, X-Frame-Options, 計費, 白名單,
 
 ## 症狀
 - 文章裡的 `<iframe>` 被瀏覽器擋下（X-Frame-Options）。
-- 嵌入後帳單隨別人的頁面流量增加（地圖 SDK 依載入次數計費）。
+- 若用依載入次數計費的 SDK（例如 Mapbox GL JS），嵌入後帳單隨別人的頁面流量增加；預設的 MapLibre 免 key、不依初始化計費。
 - 有登入的主站被開放 `frame-ancestors *`，有被 clickjacking 的風險。
 - 動態圖層的資料庫流量被別人的頁面流量放大。
 - 嵌入入口被快取，部署後拿到舊 HTML、指向已換雜湊的資產。
@@ -26,7 +26,7 @@ tags: [嵌入, iframe, frame-ancestors, CSP, X-Frame-Options, 計費, 白名單,
 1. 入口分離：專用嵌入路徑（例如 `/embed`）設 `frame-ancestors *`；有登入、站主後台、使用者自填金鑰的主站設 `frame-ancestors 'self'` 加 `X-Frame-Options: SAMEORIGIN`；卡片與文章頁若不該被嵌入，設 `'none'`。
 2. `X-Frame-Options` 不支援白名單語法，要白名單用 CSP `frame-ancestors`；它放在 Report-Only 下不生效，必須另立一條 enforcing CSP。
 3. 嵌入版只允許不會產生後端流量的圖層：白名單只收純靜態資料，排除私有／站主限定圖層；動態圖層逐案評估 egress 後加例外。
-4. 計費：若 SDK 依「地圖初始化次數」計費，嵌入版改用開源程式庫加自管或開放底圖（需核實該廠商當期計費規則）；上線後實測計費量與後端請求量確實為 0。
+4. 計費：預設的 MapLibre 免 key，不依初始化計費。若用依「地圖初始化次數」計費的 SDK（如 Mapbox GL JS，需核實當期計費規則），嵌入版改用 MapLibre 加免 key 或自管底圖（底圖條款見 [02-02](../02-basemaps/02-02-basemap-selection-decision.md)）；上線後實測計費量與後端請求量確實為 0。
 5. 嵌入入口加 `Cache-Control: no-cache`。
 6. 版權標示不可被嵌入參數移除（[11-11](11-11-attribution-and-privacy-disclosure.md)）。
 

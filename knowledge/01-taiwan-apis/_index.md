@@ -19,5 +19,5 @@
 | [01-12](01-12-coordinates-crs-and-column-names.md) | 座標系與欄名不可信：TWD97/WGS84、經緯度互換、單位錯誤 | 點全掉到海裡、赤道附近、或別的國家。 | pitfall | Observed | any | 座標系, TWD97, EPSG:3826, WGS84, 經緯度互換, bbox, 單位, 英呎, prj, 編碼, BOM, cp950 |
 | [01-13](01-13-time-zone-and-update-time.md) | 時間欄位：+8 小時、UTC 日界、UpdateTime 不是變動時間 | 最新資料出現在「未來」，時間軸今天是空的。 | pitfall | Observed | any | 時區, UTC, +8, naive datetime, 日界, 民國年, LastUpdateTime, 時間軸 |
 | [01-14](01-14-semantics-drift-and-upstream-loss.md) | 表名不等於內容、欄位與 ID 漂移、IP 封鎖與上游停更 | 資料集名叫「水庫蓄水量」卻沒有蓄水量數值；叫「船舶」卻只是港口名冊。 | pitfall | Observed | any | 口徑, 欄位漂移, ID 對應, 停更, 台灣 IP, 疊檔, 分母, row unit, 模擬資料 |
-| [01-15](01-15-source-update-detection.md) | 來源更新偵測：比對 metadata、檔名與更新日期，產生更新清單 | 靜態或半動態圖層的來源資料早就更新了，但沒人知道；檔名換了、舊連結抓到舊版或 404。 | pattern | Implemented | any | 更新偵測, metadata, 檔名含日期, 更新清單, 變更紀錄, 週期排程, data.gov.tw |
 | [01-16](01-16-data-source-types.md) | 資料來源六類：直接取得三類、加工產生三類，各自要先確認什麼 | 不知道某個主題該去哪裡找資料，或找到之後不知道該先檢查什麼。 | catalog | Implemented | any | 資料來源, 開放資料, 縣市拼接, OSM, collector, API 收集, 行政區統計, choropleth, 衛星影像, 航照, 影像辨識, YOLO, 都市熱島, 地表溫度, Landsat |
+

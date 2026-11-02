@@ -27,9 +27,9 @@ tags: [custom layer, 選型, setPaintProperty, deck.gl, TripsLayer, raster-parti
 | 想要的效果 | 先試 | 什麼時候才升級 |
 |---|---|---|
 | 顏色／大小／透明度隨時間變、累積顯示 | 原生 `setFilter`、`setPaintProperty`、`feature-state` | 逐 feature 每幀改（> 數千點） |
-| 路線漸層、逐步長出的線 | 原生 `line-gradient`（需 `lineMetrics:true`）、`line-trim-offset` | 需要彗尾淡出且每條線時間不同 |
+| 路線漸層、逐步長出的線 | 原生 `line-gradient`（需 `lineMetrics:true`）、`line-trim-offset`（Mapbox 限定） | 需要彗尾淡出且每條線時間不同 |
 | 風／海流粒子 | Mapbox 原生 `raster-particle`（資料要是 raster-array 格式） | 資料不是該格式、即時更新、MapLibre、粒子要自己的物理 |
-| 3D 模型擺在點上 | 原生 `model` layer | 要程序化幾何或 instancing 動畫 |
+| 3D 模型擺在點上 | 原生 `model` layer（Mapbox 限定；MapLibre 用 custom layer） | 要程序化幾何或 instancing 動畫 |
 | 柱、稜柱 | 原生 `fill-extrusion` | 柱高要每幀平滑、要發光 |
 | 點的光暈、真正的加性混合 | Three.js／raw WebGL custom layer | 原生做不到 additive blending |
 | 數萬到數十萬條軌跡、時間用 uniform 驅動 | deck.gl `TripsLayer`（data 引用穩定，只更新 `currentTime`） | 需要貼 Mapbox globe 或與其他 custom layer 共用 GL context |

@@ -39,6 +39,6 @@ tags: [統計圖層, choropleth, 資料來源總覽, 來源卡, 可比性, 跨�
 - 搜尋：發布腳本直接 `put` 或覆寫 `current|manifest` 檔，沒有先讀線上全量合併（any）。
 
 ## 出處
-- ColorBrewer、Matplotlib colormap 文件（數值色階方法）。
+- 一般建議：統計值以「來源資料集＋指標＋期別＋維度」辨識，不只看名稱。
 - 相關卡：[05-04](../05-color/05-04-null-is-not-zero-color.md)、[05-09](../05-color/05-09-fixed-breaks-across-time.md)、[06-06](06-06-zero-null-stale-data-contract.md)、[06-07](06-07-ratio-denominator-and-double-counting.md)、[10-02](../10-ops/10-02-data-update-vs-redeploy-and-cache.md)。
 - 實例：[mini-taiwan-pulse 統計圖層規則（資料意義先於外觀、口徑切換維持可配對期別、資料來源總覽為必要交付、不可變 artifact 加指標檔）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/statistics-layer-guidelines.md)；[統計可比性實作紀錄（增量發布保留既有 selector、只配對同期別與共用維度）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/features/statistics-comparability/README.md)。

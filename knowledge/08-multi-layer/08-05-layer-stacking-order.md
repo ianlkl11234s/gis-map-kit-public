@@ -40,7 +40,7 @@ tags: [z-order, 疊放, 圖層順序, beforeId, addLayer, 遮蔽, 選取圈, 熱
 6. 驗收：開兩個彼此重疊的圖層，兩種開啟順序各看一次，再切一次其中一層的類型，順序應該不變。
 
 ```ts
-// mapbox-gl：自訂圖層放在標籤層之下
+// mapbox-gl／maplibre：自訂圖層放在標籤層之下
 const firstLabel = map.getStyle().layers.find((l) => l.type === "symbol" && l.layout?.["text-field"])?.id;
 map.addLayer({ id, type: "fill", source, paint }, firstLabel);
 ```

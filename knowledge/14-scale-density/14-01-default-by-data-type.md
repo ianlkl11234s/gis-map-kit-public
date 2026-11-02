@@ -37,10 +37,10 @@ tags: [資料分類, 點, 線, 面, 網格, H3, 行政區, 統計, 軌跡, 移�
 
 ## 怎麼偵測
 - 通用：讀圖例，問「這層讀者要讀到什麼」；答案和畫法對不上就是選錯。
-- 搜尋：行政區統計資料用 `circle` 圖層（看 source 名稱或欄位含 `county|town|village|admin`）；泡泡半徑直接 `["get", value]` 沒有開根號（`sqrt`）（適用 stack：mapbox-gl、maplibre）；`new mapboxgl.Marker` 或 `L.marker` 出現在迴圈裡且資料是移動物件。
+- 搜尋：行政區統計資料用 `circle` 圖層（看 source 名稱或欄位含 `county|town|village|admin`）；泡泡半徑直接 `["get", value]` 沒有開根號（`sqrt`）（適用 stack：mapbox-gl、maplibre）；`new (maplibregl|mapboxgl).Marker` 或 `L.marker` 出現在迴圈裡且資料是移動物件。
 
 ## 出處
 - 一般地圖學：比例符號面積編碼、面量圖用於比率而非總數。
-- 尺寸與透明度數值見 [09-10](../09-design-system/09-10-map-symbol-size-tiers.md)；icon 與 circle 選用、疊放順序見 [09-10](../09-design-system/09-10-map-symbol-size-tiers.md)、[08-05](../08-multi-layer/08-05-layer-stacking-order.md)。
+- 尺寸與透明度分階見 [09-10](../09-design-system/09-10-map-symbol-size-tiers.md)；疊放順序見 [08-05](../08-multi-layer/08-05-layer-stacking-order.md)。
 - 實例：[mini-taiwan-pulse 圖層樣式規範（icon、網格空格不畫等規則）](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/design-system/map-layers.md)。
 - 實例：[移動物件的平面點與方向箭頭](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/map/flatMovingLayers.ts)。

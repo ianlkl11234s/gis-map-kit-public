@@ -34,5 +34,5 @@ tags: [PWA, service worker, manifest, 離線, 可安裝, 圖磚快取, 授權, �
 
 ## 出處
 - web.dev〈Installation criteria〉：https://web.dev/articles/install-criteria
-- 離線圖磚的授權限制以各底圖服務的使用政策為準（待官方驗證）。
+- 離線圖磚的授權限制以各底圖服務的使用政策為準，例如 OSM 圖磚政策不允許大量預抓：https://operations.osmfoundation.org/policies/tiles/ （其他服務請自行查當期條款）。
 - 相關卡：[02-03](../02-basemaps/02-03-osm-data-license-vs-tile-policy.md)、[02-09](../02-basemaps/02-09-self-hosted-pmtiles-basemap.md)、[09-07](../09-design-system/09-07-loading-data-time-and-stale.md)。

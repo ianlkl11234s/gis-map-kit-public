@@ -29,7 +29,7 @@ tags: [工具鏈, QGIS, ogr2ogr, GDAL, mapshaper, tippecanoe, PMTiles, MVT, turf
 | ogr2ogr（GDAL） | 轉格式、轉座標、挑欄位、用 SQL 篩選 | `ogr2ogr -t_srs EPSG:4326 out.geojson in.shp` | [15-01](15-01-crs-basics-identify-and-convert.md) |
 | geopandas | 要寫成可重跑的 Python 腳本、做 join 與彙總 | `gpd.read_file(...).to_crs(4326)` | [06-05](../06-data-formats/06-05-shrink-geometry-precision-simplify-columns.md) |
 | mapshaper | 面與線太大要簡化，保留相鄰邊界不裂開 | `mapshaper in.geojson -simplify 10% -o out.geojson` | [06-05](../06-data-formats/06-05-shrink-geometry-precision-simplify-columns.md) |
-| tippecanoe | 檔案超過數 MB 或點數上萬，切成向量圖磚（MVT／PMTiles） | `tippecanoe -o out.pmtiles -zg in.geojson` | [06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md) |
+| tippecanoe | GeoJSON 大到載入變慢（判斷見 [06-01](../06-data-formats/06-01-format-selection-decision.md)），切成向量圖磚（MVT／PMTiles） | `tippecanoe -o out.pmtiles -zg in.geojson` | [06-02](../06-data-formats/06-02-geojson-to-pmtiles-tippecanoe.md) |
 | pmtiles CLI | 檢查 PMTiles 的內容與 metadata，或抽出一塊圖磚 | `pmtiles show out.pmtiles` | [10-03](../10-ops/10-03-pmtiles-range-cdn-cors.md) |
 | turf | 在前端算距離、面積、緩衝區、點在面內 | `turf.booleanPointInPolygon(pt, poly)` | [11-08](../11-extras/11-08-measure-draw-and-compare-maps.md) |
 | PostGIS | 資料大到要放資料庫、要做空間 join 或給 API 查詢 | `ST_DWithin`、`ST_Contains` | [07-07](../07-performance/07-07-backend-preaggregate-and-data-path-triage.md) |

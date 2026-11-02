@@ -15,7 +15,7 @@ tags: [上線, 環境差異, smoke test, 25 MiB, charset, SPA fallback, token �
 ## 症狀
 - 本機 curl／dev server 都好，部署後某圖層消失；Network 裡資料檔回 200，但內容是 `index.html`，`JSON.parse` 失敗。
 - 加了自訂網域後，測試網址整站 404。
-- 測試網址上底圖 403。
+- 用需要 token 的底圖時，測試網址上底圖 403。
 - 中文亂碼；前端路由重新整理 404。
 - 雲端 `npm ci` 失敗；啟動時同步大檔太久，健康檢查逾時。
 - 某些資料檔線上 404：被 gitignore，又沒上傳。
@@ -28,7 +28,7 @@ tags: [上線, 環境差異, smoke test, 25 MiB, charset, SPA fallback, token �
 
 | 差異 | 做法 |
 |---|---|
-| 地圖 token 有網域限制 | 測試網域（如 `*.workers.dev`、`*.pages.dev`）要加入白名單，否則底圖 403 |
+| 底圖 token 有網域限制（僅限需 token 的底圖，如 Mapbox；預設 OpenFreeMap 免 key 不受影響） | 測試網域（如 `*.workers.dev`、`*.pages.dev`）要加入白名單，否則底圖 403 |
 | 託管預設不帶 `charset=utf-8` | `_headers` 補 `Content-Type` charset |
 | SPA 路由 | 有前端路由 → 託管設 SPA fallback；沒有 → 設 `none`，否則缺檔回 200 HTML |
 | 單檔上限（常見 25 MiB 等級） | 建置後檢查 `dist/` 最大檔；超過改放物件儲存 |

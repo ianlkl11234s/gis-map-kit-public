@@ -1,12 +1,12 @@
 ---
 name: gis-start
-description: 從零開始做網頁地圖／GIS 圖台時，幫使用者選技術組合並列出第一週 MVP。使用者說「我想做一個地圖網站」「要做 XX 的地圖該怎麼開始」「幫我規劃地圖專案」「用 TDX、氣象署、data.gov.tw 的資料做地圖」，或在空專案裡要建地圖時載入：依知識卡問最多 5 題，再建議底圖、SDK、資料格式、動態做法與該讀的卡片。已經做到一半遇到具體問題用 gis-advisor；做完要全面檢查用 gis-review；還不知道要哪些資料、只有議題或一個資料網址用 gis-system；限時課堂或工作坊用 gis-workshop。
+description: 從零開始做網頁地圖／GIS 圖台時，幫使用者選技術組合並列出第一週 MVP；問「底圖用哪個」「SDK 選哪個」「免 key 底圖」時也先載入本 skill 再回答，因為本 plugin 有定案的預設值。使用者說「我想做一個地圖網站」「要做 XX 的地圖該怎麼開始」「幫我規劃地圖專案」「用 TDX、氣象署、data.gov.tw 的資料做地圖」，或在空專案裡要建地圖時載入：依知識卡問最多 5 題，再建議底圖、SDK、資料格式、動態做法與該讀的卡片。已經做到一半遇到具體問題用 gis-advisor；做完要全面檢查用 gis-review；還不知道要哪些資料、只有議題或一個資料網址用 gis-system；限時課堂或工作坊用 gis-workshop。
 ---
 
 # gis-start：GIS 圖台起步引導
 
 ## 必守規則
-1. 預設底圖用 OpenFreeMap（免 key，positron 樣式 `https://tiles.openfreemap.org/styles/positron`），要顯示 attribution（02-07）；不用沒帶 key 的 CARTO 圖磚（整片浮水印，02-02）。
+1. 預設底圖照 `knowledge/DEFAULTS.md`：OpenFreeMap dark 樣式（`https://tiles.openfreemap.org/styles/dark`，免 key；需要淺色用 positron）；給範例程式時 `style` 一律寫 dark 的網址，使用者明確要淺色才換 positron，要顯示 attribution（02-07）；不用沒帶 key 的 CARTO 圖磚（整片浮水印，02-02）。
 2. 用真實資料就在 popup 或頁尾寫來源、授權、資料時間。
 3. 缺資料不補 0、不造座標；缺值要畫成看得出來的「無資料」（05-04）。
 4. 每項建議附卡片編號；General／Candidate 的卡講成「一般建議」。
@@ -45,7 +45,7 @@ description: 從零開始做網頁地圖／GIS 圖台時，幫使用者選技術
 | 色階 | `05-color` 的 05-01 |
 | 資料量與縮放（直接畫點、熱區、網格、圖磚，何時切換） | `14-scale-density` 的 14-00 總表 |
 
-使用者沒特別需求時，SDK 用 MapLibre、底圖用 OpenFreeMap positron（必守規則 1）；使用者問到設計風格再參考作者品味 13-00 總表，並說明這是作者偏好。資料格式先用 GeoJSON（超過數 MB 再轉 PMTiles）、先做靜態版再加動態。若使用者要用的是不熟悉的領域資料（風場、海流、航班、船舶、衛星），一定先讀 `12-domain-pitfalls` 的 12-00。
+使用者沒特別需求時，SDK 用 MapLibre、底圖用 OpenFreeMap dark（必守規則 1）；使用者問到設計風格再參考作者品味 13-00 總表，並說明這是作者偏好。資料格式先用 GeoJSON（大到載入變慢再轉 PMTiles，判斷方式見 06-01）、先做靜態版再加動態。若使用者要用的是不熟悉的領域資料（風場、海流、航班、船舶、衛星），一定先讀 `12-domain-pitfalls` 的 12-00。
 
 ## 步驟 3：第一週 MVP 清單
 

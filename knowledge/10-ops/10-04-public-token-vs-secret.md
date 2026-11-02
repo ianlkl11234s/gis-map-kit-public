@@ -16,7 +16,7 @@ tags: [token, secret, 金鑰, 環境變數, VITE_, bundle, anon key, RLS, 輪換
 - 把 service role、API client secret、S3 金鑰放進 `VITE_*` 變數，打包後任何人 view-source 都看得到。
 - 以為「放在 `.env` 就安全」。
 - 以為「anon key 是公開的＝資料庫全開」，或反過來忽略它其實沒有權限保護。
-- 測試網址上底圖 403（token 有網域限制，新網域不在白名單，見 [10-05](10-05-local-vs-production-differences.md)）。
+- 若用需要 token 的底圖（例如 Mapbox），測試網址上底圖 403：token 有網域限制，新網域不在白名單（見 [10-05](10-05-local-vs-production-differences.md)）。預設的 OpenFreeMap 免 key，沒有這個問題。
 
 ## 原因
 前端 bundler 會把特定前綴（如 `VITE_`、`NEXT_PUBLIC_`）的變數內嵌進產出檔。有些「token」本來就是設計給前端用的，保護靠別的機制；真 secret 則絕不能進前端。
@@ -24,11 +24,11 @@ tags: [token, secret, 金鑰, 環境變數, VITE_, bundle, anon key, RLS, 輪換
 ## 解法
 | | 公開 client token | 真 secret |
 |---|---|---|
-| 例 | 地圖底圖 public token、資料庫 anon key | service role、API client secret、物件儲存存取金鑰、LLM key |
+| 例 | 地圖底圖 public token（Mapbox 等需 key 的底圖才有）、資料庫 anon key | service role、API client secret、物件儲存存取金鑰、LLM key |
 | 進前端 | 會（build 期注入） | 禁止 |
 | 保護 | 網域限制（best-effort）、資料庫權限（RLS／GRANT） | 後端環境變數、CI secrets；外洩就輪換 |
 
-1. anon key 能碰到什麼，完全取決於資料庫權限：表、欄位、RPC 的 REVOKE／GRANT 與既有函式怎麼收回見 [10-23](10-23-database-public-exposure-tables-functions.md)，參數 clamp 見 [07-08](../07-performance/07-08-public-rpc-timeout-clamp-rowcap.md)。
+1. anon key 能碰到什麼，完全取決於資料庫權限：表、欄位、RPC 的 REVOKE／GRANT 與既有函式怎麼收回見 [10-23](10-23-database-public-exposure-tables-functions.md)；對外函式的參數要在函式內限制範圍與筆數。
 2. 託管平台出事（外洩環境變數）時，放在該平台的金鑰全部要換；平時就維護「金鑰名稱清單」（只列名稱，不列值）。金鑰一旦進入對話或 log，視為外洩並輪換；dev server 與 CLI 的外洩路徑見 [10-21](10-21-secrets-in-bundle-and-dev-server.md)。
 3. 使用者自填 key（BYOK：存 session 儲存、直連、不經手伺服器）的設計，網站端沒有代付端點，才不會有被刷費用的風險；若要代付，必須經後端代理並限流。
 4. 公開 client token 要設網域／URL 限制、只給最小權限；建置後掃描 bundle（搜尋 `sk-`、`service_role` 等金鑰格式），納入 CI。

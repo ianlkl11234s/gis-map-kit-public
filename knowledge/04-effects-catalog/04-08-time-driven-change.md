@@ -36,7 +36,7 @@ tags: [時間軸, choropleth, feature-state, setFilter, fade, uniform, 壅塞, �
 - 時間語意先判斷：track（只在資料時段顯示）／cyclic（只取時刻循環）／snapshot（顯示最近一張）／event（顯示 N 小時內）。
 - 跨站比較的指標（水位）用「當日變化量」而不是絕對值，否則拖時間軸數字幾乎不動。
 - 只有兩期資料時不補中間年份、不做播放動畫。
-- 動態指標缺測畫「無資料」灰，不是 0。
+- 動態指標缺測顯示成「無資料」（畫法見 [05-04](../05-color/05-04-null-is-not-zero-color.md)），不是 0。
 
 ## 怎麼偵測
 - 通用：播放時 FPS 低；每幀 Network／CPU 有大量 JSON 序列化；暫停後仍在重繪。

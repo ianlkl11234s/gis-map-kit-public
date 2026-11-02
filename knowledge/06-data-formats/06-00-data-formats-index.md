@@ -25,7 +25,7 @@ tags: [總表, 資料格式, PMTiles, 快取, 瘦身, 資料契約, 口徑, 向�
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
 |---|---|---|
 | 設長期快取、部署後仍是舊檔 | [06-04](06-04-cache-immutable-404-and-stale-edge.md) | 只有 URL 對應永不改變內容的檔才設 immutable，內容變就換檔名；部署完成前探測新 URL 加 cache-buster |
-| 檔案太大要縮 | [06-05](06-05-shrink-geometry-precision-simplify-columns.md) | 依序：刪欄位 → 截精度 → 傳輸壓縮 → 保拓撲簡化 → 才換格式，每步量大小；簡化後量距離要先 Segmentize |
+| 檔案太大要縮 | [06-05](06-05-shrink-geometry-precision-simplify-columns.md) | 依序：刪欄位 → 截精度 → 傳輸壓縮 → 保拓撲簡化 → 才換格式，每步量大小；換格式的檔案大小起點門檻在這張；簡化後量距離要先 Segmentize |
 
 ### 資料契約與口徑
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
@@ -49,12 +49,10 @@ tags: [總表, 資料格式, PMTiles, 快取, 瘦身, 資料契約, 口徑, 向�
 ### 路網記憶體
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
 |---|---|---|
-| 全國 OSM 路網分析吃爆記憶體 | [06-12](06-12-national-osm-road-network-memory.md) | 先找本機 PBF、osmium 預過濾、跑前試算 RAM；分區 bbox 外擴重疊；不對全國打公開 Overpass |
 
 ### 動態圖磚
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |
 |---|---|---|
-| 資料會變或要依條件查，想用 PostGIS 出圖磚 | [06-13](06-13-postgis-dynamic-mvt-tiles.md) | 動態 MVT 才用於會變或要查詢；`&&` 與 `ST_AsMVTGeom` 座標系對齊，設 zoom 下限、欄位白名單，用已知有資料的磚實測 |
 
 ## 相關主題
 - 依數量級與縮放選畫法：[14-02](../14-scale-density/14-02-point-count-thresholds.md)、[14-07](../14-scale-density/14-07-moving-objects-and-trails-at-scale.md)。

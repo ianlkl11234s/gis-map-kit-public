@@ -10,7 +10,7 @@ tags: [粒子, 風場, 海流, nullschool, advection, 向量場, raster-particle
 ---
 
 ## 原則
-流場粒子先用 Mapbox 原生 `raster-particle`；資料格式或引擎不符時，改用「預烘向量場 PNG + CPU advection + instanced 線」，粒子數量依 zoom 量化調整。
+用 Mapbox GL JS 且資料是 raster-array 時，先試原生 `raster-particle`；用 MapLibre（本套預設）或資料格式不符時，改用「預烘向量場 PNG + CPU advection + instanced 線」，粒子數量依 zoom 量化調整。
 
 ## 症狀
 想做 nullschool 式的流動細線，但資料不是 Mapbox 的 raster-array，或需要在 MapLibre／globe 上跑。

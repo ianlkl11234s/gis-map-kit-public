@@ -20,7 +20,6 @@ tags: [總表, 發布, SEO, llms.txt, 分享, 嵌入, 截圖, 定位, PWA, 無�
 | 搜尋引擎看不到內容 | [11-01](11-01-spa-empty-html-seo-prerender.md) | 原始 HTML 放靜態說明、meta、結構化資料，結論一篇一個網址 |
 | robots、sitemap、canonical | [11-02](11-02-robots-sitemap-soft404-canonical.md) | 放真實檔案，不存在的路徑回 404，多語版 canonical 指向各自 |
 | llms.txt 與 AI 爬蟲 | [11-03](11-03-llms-txt-and-ai-crawler-policy.md) | 當低成本實驗，用各 bot 的 User-Agent 實測回應碼，不一致回報站主 |
-| 想讓人轉貼 | [11-15](11-15-promote-your-map-video-and-before-after.md) | 影片與前後對比動畫與搜尋是兩條獨立管道，素材用真實畫面 |
 
 ### 分享與嵌入
 | 遇到什麼／想做什麼 | 卡片 | 一句重點 |

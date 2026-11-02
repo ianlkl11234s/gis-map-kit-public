@@ -36,6 +36,6 @@ tags: [SEO, SPA, prerender, 預渲染, JSON-LD, meta description, noscript, 靜�
 
 ## 出處
 - Google Search Central〈JavaScript SEO basics〉：https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics ；schema.org `WebApplication`、`BlogPosting`。
-- 相關卡：[11-02](11-02-robots-sitemap-soft404-canonical.md)、[11-05](11-05-embed-page-security-billing-gestures.md)、[11-15](11-15-promote-your-map-video-and-before-after.md)（社群轉貼素材）。
+- 相關卡：[11-02](11-02-robots-sitemap-soft404-canonical.md)、[11-05](11-05-embed-page-security-billing-gestures.md)。
 - 實例：[mini-taiwan-pulse 首頁的靜態說明與 meta](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/index.html)、[文章靜態產生](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/src/blog/generator.ts)、[網站健檢紀錄](https://github.com/ianlkl11234s/mini-taiwan-pulse/blob/af703e85417277c83391cfe446f7771c209ad2b8/docs/audit/site-health-2026-10-16.md)。
 
